@@ -3,7 +3,7 @@ project(MiniHell C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(MiniHell ./main.c)
+add_executable(MiniHell ./main.c libft/ft_putchar.c)
 
 target_link_libraries(MiniHell /Users/dpatrica/CLionProjects/MiniHell/libft/libft.a)
 

@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/MiniHell.dir/libft/ft_putchar.c.o"
   "CMakeFiles/MiniHell.dir/main.c.o"
   "MiniHell"
   "MiniHell.pdb"

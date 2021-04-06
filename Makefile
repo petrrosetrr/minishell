@@ -55,7 +55,8 @@ LIBSRCS	=	./libft/ft_strlen.c\
 			./libft/ft_digplen.c\
 			./libft/get_next_line.c\
 			./libft/ft_rhr.c\
-			./libft/ft_mstr.c
+			./libft/ft_mstr.c\
+			./libft/ft_putchar.c
 
 HEAD	=	./includes/minishell.h
 NAME	= 	minishell

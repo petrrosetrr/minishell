@@ -78,6 +78,9 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/dpatrica/CLionProjects/MiniHell/libft/ft_putchar.c">
+			<Option target="MiniHell"/>
+		</Unit>
 		<Unit filename="/Users/dpatrica/CLionProjects/MiniHell/main.c">
 			<Option target="MiniHell"/>
 		</Unit>
