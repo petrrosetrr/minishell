@@ -13,5 +13,7 @@
 #include <termios.h>
 #include <termcap.h>
 #include <term.h>
+#include <sys/ioctl.h>
+#include <signal.h>
 
 #endif
