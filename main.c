@@ -1,13 +1,24 @@
 #include "./includes/minishell.h"
 
-int main(int argc, char **argv, char **envp)
+static void	init(t_param *param)
 {
-	char			str[9999];
+	param->all_com = NULL;
+	param->com_tmp = NULL;
+	param->cur = 0;
+	param->last = 0;
+}
+
+int			main(int argc, char **argv, char **envp)
+{
+	t_param param;
+
+	param.com = NULL;
+	init(&param);
+	termcap(&param);
+/*	char			str[9999];
 	int				len;
 	int				i;
-	int				up;
 //	int				bit;
-	int				col;
 	struct termios	term;
 	struct winsize	win;
 
@@ -30,98 +41,17 @@ int main(int argc, char **argv, char **envp)
 			ioctl(1, TIOCGWINSZ, &win);
 			str[len] = '\0';
 			if (!(ft_strncmp(str, "\x1b[A", 3)))
-			{
-				up = i / win.ws_col;
-				if (up)
-				{
-					i = i - (win.ws_col * (i / win.ws_col));
-					while (i--)
-					{
-						tputs(cursor_left, 1, ft_putchar);
-						tputs(delete_character, 1, ft_putchar);
-					}
-					tputs(delete_character, 1, ft_putchar);
-					tputs(cursor_up, 1, ft_putchar);
-					while (--up)
-					{
-						col = win.ws_col;
-						while (col--)
-							tputs(delete_character, 1, ft_putchar);
-						tputs(cursor_up, 1, ft_putchar);
-					}
-					i = 16;
-					while (i--)
-						tputs(cursor_right, 1, ft_putchar);
-					tputs(save_cursor, 1, ft_putchar);
-					i = win.ws_col;
-				}
-				else
-					tputs(restore_cursor, 1, ft_putchar);
-				write(1, "up", 2);
-				while (i--)
-					tputs(delete_character, 1, ft_putchar);
-				i = 16 + 2;
-			}
+				i = up_down(i, win.ws_col, 0);
 			else if (!(ft_strncmp(str, "\x1b[B", 3)))
-			{
-				up = i / win.ws_col;
-				if (up)
-				{
-					i = i - (win.ws_col * (i / win.ws_col));
-					while (i--)
-					{
-						tputs(cursor_left, 1, ft_putchar);
-						tputs(delete_character, 1, ft_putchar);
-					}
-					tputs(delete_character, 1, ft_putchar);
-					tputs(cursor_up, 1, ft_putchar);
-					while (--up)
-					{
-						col = win.ws_col;
-						while (col--)
-							tputs(delete_character, 1, ft_putchar);
-						tputs(cursor_up, 1, ft_putchar);
-					}
-					i = 16;
-					while (i--)
-						tputs(cursor_right, 1, ft_putchar);
-					tputs(save_cursor, 1, ft_putchar);
-					i = win.ws_col;
-				}
-				else
-					tputs(restore_cursor, 1, ft_putchar);
-				write(1, "down", 4);
-				while (i--)
-					tputs(delete_character, 1, ft_putchar);
-				i = 16 + 4;
-			}
+				i = up_down(i, win.ws_col, 1);
 			else if (!(ft_strncmp(str, "\x1b[D", 3)))
 				continue ;
 			else if (!(ft_strncmp(str, "\x1b[C", 3)))
 				continue ;
 			else if (!(ft_strncmp(str, "\t", 2)))
 				continue ;
-//				tputs(delete_character, 1, ft_putchar);
 			else if (!(ft_strncmp(str, "\177", 2)) && i > 16)
-			{
-				if (i / win.ws_col > 0 && !(i - (win.ws_col * (i / win.ws_col))))
-				{
-					col = win.ws_col;
-					tputs(cursor_up, 1, ft_putchar);
-					while (col--)
-						tputs(cursor_right, 1, ft_putchar);
-					write(1, " ", 1);
-					tputs(cursor_left, 1, ft_putchar);
-					tputs(cursor_right, 1, ft_putchar);
-				}
-				else
-				{
-					tputs(delete_character, 1, ft_putchar);
-					tputs(cursor_left, 1, ft_putchar);
-					tputs(delete_character, 1, ft_putchar);
-				}
-				i--;
-			}
+				i -= backspace(i, win.ws_col);
 			else if (ft_strncmp(str, "\177", 2))
 			{
 				write(1, str, len);
@@ -137,6 +67,6 @@ int main(int argc, char **argv, char **envp)
 			if (!(ft_strncmp(str, "\n", 2)))
 				break ;
 		}
-	}
+	}*/
 	return (0);
 }

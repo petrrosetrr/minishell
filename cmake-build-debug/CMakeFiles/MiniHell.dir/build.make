@@ -103,20 +103,65 @@ CMakeFiles/MiniHell.dir/libft/ft_putchar.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/MiniHell.dir/libft/ft_putchar.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/dpatrica/CLionProjects/MiniHell/libft/ft_putchar.c -o CMakeFiles/MiniHell.dir/libft/ft_putchar.c.s
 
+CMakeFiles/MiniHell.dir/termcap/termcap.c.o: CMakeFiles/MiniHell.dir/flags.make
+CMakeFiles/MiniHell.dir/termcap/termcap.c.o: ../termcap/termcap.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/dpatrica/CLionProjects/MiniHell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/MiniHell.dir/termcap/termcap.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/MiniHell.dir/termcap/termcap.c.o   -c /Users/dpatrica/CLionProjects/MiniHell/termcap/termcap.c
+
+CMakeFiles/MiniHell.dir/termcap/termcap.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/MiniHell.dir/termcap/termcap.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/dpatrica/CLionProjects/MiniHell/termcap/termcap.c > CMakeFiles/MiniHell.dir/termcap/termcap.c.i
+
+CMakeFiles/MiniHell.dir/termcap/termcap.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/MiniHell.dir/termcap/termcap.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/dpatrica/CLionProjects/MiniHell/termcap/termcap.c -o CMakeFiles/MiniHell.dir/termcap/termcap.c.s
+
+CMakeFiles/MiniHell.dir/termcap/key_function.c.o: CMakeFiles/MiniHell.dir/flags.make
+CMakeFiles/MiniHell.dir/termcap/key_function.c.o: ../termcap/key_function.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/dpatrica/CLionProjects/MiniHell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/MiniHell.dir/termcap/key_function.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/MiniHell.dir/termcap/key_function.c.o   -c /Users/dpatrica/CLionProjects/MiniHell/termcap/key_function.c
+
+CMakeFiles/MiniHell.dir/termcap/key_function.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/MiniHell.dir/termcap/key_function.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/dpatrica/CLionProjects/MiniHell/termcap/key_function.c > CMakeFiles/MiniHell.dir/termcap/key_function.c.i
+
+CMakeFiles/MiniHell.dir/termcap/key_function.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/MiniHell.dir/termcap/key_function.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/dpatrica/CLionProjects/MiniHell/termcap/key_function.c -o CMakeFiles/MiniHell.dir/termcap/key_function.c.s
+
+CMakeFiles/MiniHell.dir/termcap/dop_func.c.o: CMakeFiles/MiniHell.dir/flags.make
+CMakeFiles/MiniHell.dir/termcap/dop_func.c.o: ../termcap/dop_func.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/dpatrica/CLionProjects/MiniHell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/MiniHell.dir/termcap/dop_func.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/MiniHell.dir/termcap/dop_func.c.o   -c /Users/dpatrica/CLionProjects/MiniHell/termcap/dop_func.c
+
+CMakeFiles/MiniHell.dir/termcap/dop_func.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/MiniHell.dir/termcap/dop_func.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/dpatrica/CLionProjects/MiniHell/termcap/dop_func.c > CMakeFiles/MiniHell.dir/termcap/dop_func.c.i
+
+CMakeFiles/MiniHell.dir/termcap/dop_func.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/MiniHell.dir/termcap/dop_func.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/dpatrica/CLionProjects/MiniHell/termcap/dop_func.c -o CMakeFiles/MiniHell.dir/termcap/dop_func.c.s
+
 # Object files for target MiniHell
 MiniHell_OBJECTS = \
 "CMakeFiles/MiniHell.dir/main.c.o" \
-"CMakeFiles/MiniHell.dir/libft/ft_putchar.c.o"
+"CMakeFiles/MiniHell.dir/libft/ft_putchar.c.o" \
+"CMakeFiles/MiniHell.dir/termcap/termcap.c.o" \
+"CMakeFiles/MiniHell.dir/termcap/key_function.c.o" \
+"CMakeFiles/MiniHell.dir/termcap/dop_func.c.o"
 
 # External object files for target MiniHell
 MiniHell_EXTERNAL_OBJECTS =
 
 MiniHell: CMakeFiles/MiniHell.dir/main.c.o
 MiniHell: CMakeFiles/MiniHell.dir/libft/ft_putchar.c.o
+MiniHell: CMakeFiles/MiniHell.dir/termcap/termcap.c.o
+MiniHell: CMakeFiles/MiniHell.dir/termcap/key_function.c.o
+MiniHell: CMakeFiles/MiniHell.dir/termcap/dop_func.c.o
 MiniHell: CMakeFiles/MiniHell.dir/build.make
 MiniHell: ../libft/libft.a
 MiniHell: CMakeFiles/MiniHell.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/dpatrica/CLionProjects/MiniHell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C executable MiniHell"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/dpatrica/CLionProjects/MiniHell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable MiniHell"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/MiniHell.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

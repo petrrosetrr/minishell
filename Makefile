@@ -10,7 +10,10 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=	./main.c
+SRCS	=	./main.c\
+			./termcap/termcap.c\
+			./termcap/key_function.c\
+			./termcap/dop_func.c
 
 LIBSRCS	=	./libft/ft_strlen.c\
 			./libft/ft_memset.c\

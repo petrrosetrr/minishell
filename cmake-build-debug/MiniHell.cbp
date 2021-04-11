@@ -84,6 +84,15 @@
 		<Unit filename="/Users/dpatrica/CLionProjects/MiniHell/main.c">
 			<Option target="MiniHell"/>
 		</Unit>
+		<Unit filename="/Users/dpatrica/CLionProjects/MiniHell/termcap/dop_func.c">
+			<Option target="MiniHell"/>
+		</Unit>
+		<Unit filename="/Users/dpatrica/CLionProjects/MiniHell/termcap/key_function.c">
+			<Option target="MiniHell"/>
+		</Unit>
+		<Unit filename="/Users/dpatrica/CLionProjects/MiniHell/termcap/termcap.c">
+			<Option target="MiniHell"/>
+		</Unit>
 		<Unit filename="/Users/dpatrica/CLionProjects/MiniHell/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

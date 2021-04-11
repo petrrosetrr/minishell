@@ -16,4 +16,17 @@
 #include <sys/ioctl.h>
 #include <signal.h>
 
+typedef struct	s_param
+{
+	char	*com;
+	char 	*com_tmp;
+	char	**all_com;
+	int 	cur;
+	int		last;
+}				t_param;
+
+int			termcap(t_param *param);
+int			key_func(char *str, t_param *param, int len, int *i);
+char		*delete_last_char(char *com);
+
 #endif

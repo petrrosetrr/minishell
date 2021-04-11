@@ -197,6 +197,87 @@ main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniHell.dir/build.make CMakeFiles/MiniHell.dir/main.c.s
 .PHONY : main.c.s
 
+termcap/dop_func.o: termcap/dop_func.c.o
+
+.PHONY : termcap/dop_func.o
+
+# target to build an object file
+termcap/dop_func.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniHell.dir/build.make CMakeFiles/MiniHell.dir/termcap/dop_func.c.o
+.PHONY : termcap/dop_func.c.o
+
+termcap/dop_func.i: termcap/dop_func.c.i
+
+.PHONY : termcap/dop_func.i
+
+# target to preprocess a source file
+termcap/dop_func.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniHell.dir/build.make CMakeFiles/MiniHell.dir/termcap/dop_func.c.i
+.PHONY : termcap/dop_func.c.i
+
+termcap/dop_func.s: termcap/dop_func.c.s
+
+.PHONY : termcap/dop_func.s
+
+# target to generate assembly for a file
+termcap/dop_func.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniHell.dir/build.make CMakeFiles/MiniHell.dir/termcap/dop_func.c.s
+.PHONY : termcap/dop_func.c.s
+
+termcap/key_function.o: termcap/key_function.c.o
+
+.PHONY : termcap/key_function.o
+
+# target to build an object file
+termcap/key_function.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniHell.dir/build.make CMakeFiles/MiniHell.dir/termcap/key_function.c.o
+.PHONY : termcap/key_function.c.o
+
+termcap/key_function.i: termcap/key_function.c.i
+
+.PHONY : termcap/key_function.i
+
+# target to preprocess a source file
+termcap/key_function.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniHell.dir/build.make CMakeFiles/MiniHell.dir/termcap/key_function.c.i
+.PHONY : termcap/key_function.c.i
+
+termcap/key_function.s: termcap/key_function.c.s
+
+.PHONY : termcap/key_function.s
+
+# target to generate assembly for a file
+termcap/key_function.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniHell.dir/build.make CMakeFiles/MiniHell.dir/termcap/key_function.c.s
+.PHONY : termcap/key_function.c.s
+
+termcap/termcap.o: termcap/termcap.c.o
+
+.PHONY : termcap/termcap.o
+
+# target to build an object file
+termcap/termcap.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniHell.dir/build.make CMakeFiles/MiniHell.dir/termcap/termcap.c.o
+.PHONY : termcap/termcap.c.o
+
+termcap/termcap.i: termcap/termcap.c.i
+
+.PHONY : termcap/termcap.i
+
+# target to preprocess a source file
+termcap/termcap.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniHell.dir/build.make CMakeFiles/MiniHell.dir/termcap/termcap.c.i
+.PHONY : termcap/termcap.c.i
+
+termcap/termcap.s: termcap/termcap.c.s
+
+.PHONY : termcap/termcap.s
+
+# target to generate assembly for a file
+termcap/termcap.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniHell.dir/build.make CMakeFiles/MiniHell.dir/termcap/termcap.c.s
+.PHONY : termcap/termcap.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -212,6 +293,15 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... termcap/dop_func.o"
+	@echo "... termcap/dop_func.i"
+	@echo "... termcap/dop_func.s"
+	@echo "... termcap/key_function.o"
+	@echo "... termcap/key_function.i"
+	@echo "... termcap/key_function.s"
+	@echo "... termcap/termcap.o"
+	@echo "... termcap/termcap.i"
+	@echo "... termcap/termcap.s"
 .PHONY : help
 
 
