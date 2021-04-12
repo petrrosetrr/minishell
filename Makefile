@@ -13,7 +13,10 @@
 SRCS	=	./main.c\
 			./termcap/termcap.c\
 			./termcap/key_function.c\
-			./termcap/dop_func.c
+			./termcap/dop_func.c\
+			./parser/parser.c\
+			./parser/pre_parser.c\
+			./other_fun.c
 
 LIBSRCS	=	./libft/ft_strlen.c\
 			./libft/ft_memset.c\
@@ -59,7 +62,8 @@ LIBSRCS	=	./libft/ft_strlen.c\
 			./libft/get_next_line.c\
 			./libft/ft_rhr.c\
 			./libft/ft_mstr.c\
-			./libft/ft_putchar.c
+			./libft/ft_putchar.c\
+			./libft/drop_space.c
 
 HEAD	=	./includes/minishell.h
 NAME	= 	minishell

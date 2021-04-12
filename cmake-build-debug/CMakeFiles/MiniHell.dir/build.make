@@ -142,13 +142,69 @@ CMakeFiles/MiniHell.dir/termcap/dop_func.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/MiniHell.dir/termcap/dop_func.c.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/dpatrica/CLionProjects/MiniHell/termcap/dop_func.c -o CMakeFiles/MiniHell.dir/termcap/dop_func.c.s
 
+CMakeFiles/MiniHell.dir/parser/parser.c.o: CMakeFiles/MiniHell.dir/flags.make
+CMakeFiles/MiniHell.dir/parser/parser.c.o: ../parser/parser.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/dpatrica/CLionProjects/MiniHell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/MiniHell.dir/parser/parser.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/MiniHell.dir/parser/parser.c.o   -c /Users/dpatrica/CLionProjects/MiniHell/parser/parser.c
+
+CMakeFiles/MiniHell.dir/parser/parser.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/MiniHell.dir/parser/parser.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/dpatrica/CLionProjects/MiniHell/parser/parser.c > CMakeFiles/MiniHell.dir/parser/parser.c.i
+
+CMakeFiles/MiniHell.dir/parser/parser.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/MiniHell.dir/parser/parser.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/dpatrica/CLionProjects/MiniHell/parser/parser.c -o CMakeFiles/MiniHell.dir/parser/parser.c.s
+
+CMakeFiles/MiniHell.dir/parser/pre_parser.c.o: CMakeFiles/MiniHell.dir/flags.make
+CMakeFiles/MiniHell.dir/parser/pre_parser.c.o: ../parser/pre_parser.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/dpatrica/CLionProjects/MiniHell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/MiniHell.dir/parser/pre_parser.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/MiniHell.dir/parser/pre_parser.c.o   -c /Users/dpatrica/CLionProjects/MiniHell/parser/pre_parser.c
+
+CMakeFiles/MiniHell.dir/parser/pre_parser.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/MiniHell.dir/parser/pre_parser.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/dpatrica/CLionProjects/MiniHell/parser/pre_parser.c > CMakeFiles/MiniHell.dir/parser/pre_parser.c.i
+
+CMakeFiles/MiniHell.dir/parser/pre_parser.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/MiniHell.dir/parser/pre_parser.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/dpatrica/CLionProjects/MiniHell/parser/pre_parser.c -o CMakeFiles/MiniHell.dir/parser/pre_parser.c.s
+
+CMakeFiles/MiniHell.dir/libft/drop_space.c.o: CMakeFiles/MiniHell.dir/flags.make
+CMakeFiles/MiniHell.dir/libft/drop_space.c.o: ../libft/drop_space.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/dpatrica/CLionProjects/MiniHell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/MiniHell.dir/libft/drop_space.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/MiniHell.dir/libft/drop_space.c.o   -c /Users/dpatrica/CLionProjects/MiniHell/libft/drop_space.c
+
+CMakeFiles/MiniHell.dir/libft/drop_space.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/MiniHell.dir/libft/drop_space.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/dpatrica/CLionProjects/MiniHell/libft/drop_space.c > CMakeFiles/MiniHell.dir/libft/drop_space.c.i
+
+CMakeFiles/MiniHell.dir/libft/drop_space.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/MiniHell.dir/libft/drop_space.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/dpatrica/CLionProjects/MiniHell/libft/drop_space.c -o CMakeFiles/MiniHell.dir/libft/drop_space.c.s
+
+CMakeFiles/MiniHell.dir/other_fun.c.o: CMakeFiles/MiniHell.dir/flags.make
+CMakeFiles/MiniHell.dir/other_fun.c.o: ../other_fun.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/dpatrica/CLionProjects/MiniHell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/MiniHell.dir/other_fun.c.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/MiniHell.dir/other_fun.c.o   -c /Users/dpatrica/CLionProjects/MiniHell/other_fun.c
+
+CMakeFiles/MiniHell.dir/other_fun.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/MiniHell.dir/other_fun.c.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/dpatrica/CLionProjects/MiniHell/other_fun.c > CMakeFiles/MiniHell.dir/other_fun.c.i
+
+CMakeFiles/MiniHell.dir/other_fun.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/MiniHell.dir/other_fun.c.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/dpatrica/CLionProjects/MiniHell/other_fun.c -o CMakeFiles/MiniHell.dir/other_fun.c.s
+
 # Object files for target MiniHell
 MiniHell_OBJECTS = \
 "CMakeFiles/MiniHell.dir/main.c.o" \
 "CMakeFiles/MiniHell.dir/libft/ft_putchar.c.o" \
 "CMakeFiles/MiniHell.dir/termcap/termcap.c.o" \
 "CMakeFiles/MiniHell.dir/termcap/key_function.c.o" \
-"CMakeFiles/MiniHell.dir/termcap/dop_func.c.o"
+"CMakeFiles/MiniHell.dir/termcap/dop_func.c.o" \
+"CMakeFiles/MiniHell.dir/parser/parser.c.o" \
+"CMakeFiles/MiniHell.dir/parser/pre_parser.c.o" \
+"CMakeFiles/MiniHell.dir/libft/drop_space.c.o" \
+"CMakeFiles/MiniHell.dir/other_fun.c.o"
 
 # External object files for target MiniHell
 MiniHell_EXTERNAL_OBJECTS =
@@ -158,10 +214,14 @@ MiniHell: CMakeFiles/MiniHell.dir/libft/ft_putchar.c.o
 MiniHell: CMakeFiles/MiniHell.dir/termcap/termcap.c.o
 MiniHell: CMakeFiles/MiniHell.dir/termcap/key_function.c.o
 MiniHell: CMakeFiles/MiniHell.dir/termcap/dop_func.c.o
+MiniHell: CMakeFiles/MiniHell.dir/parser/parser.c.o
+MiniHell: CMakeFiles/MiniHell.dir/parser/pre_parser.c.o
+MiniHell: CMakeFiles/MiniHell.dir/libft/drop_space.c.o
+MiniHell: CMakeFiles/MiniHell.dir/other_fun.c.o
 MiniHell: CMakeFiles/MiniHell.dir/build.make
 MiniHell: ../libft/libft.a
 MiniHell: CMakeFiles/MiniHell.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/dpatrica/CLionProjects/MiniHell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking C executable MiniHell"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/dpatrica/CLionProjects/MiniHell/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking C executable MiniHell"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/MiniHell.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -66,5 +66,6 @@ int			get_next_line(int fd, char **line);
 int			ft_rhr(const char *s, int c);
 int			ft_mstr(const char *str1, const char *str2);
 int			ft_putchar(int c);
+int			drop_space(char **map);
 
 #endif

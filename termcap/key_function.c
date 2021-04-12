@@ -148,13 +148,19 @@ int			key_func(char *str, t_param *param, int len, int *i)
 
 	ioctl(1, TIOCGWINSZ, &win);
 	str[len] = '\0';
-	if (!ft_strncmp(str, "\x1b[A", 3) && param->cur)
+	if (!ft_strncmp(str, "\n", 2))
+		return (1);
+	else if (!ft_strncmp(str, "\4", 1))
+		return (EXIT);
+	else if (!ft_strncmp(str, "\3", 1) && write(1, "\n", 1))
+		return (CTRL_C);
+	else if (!ft_strncmp(str, "\x1b[A", 3) && param->cur)
 		*i = up_down(param, *i, win.ws_col, 0);
 	else if (!ft_strncmp(str, "\x1b[B", 3) && param->cur < param->last)
 		*i = up_down(param, *i, win.ws_col, 1);
 	else if (!ft_strncmp(str, "\x1b[D", 3) || !ft_strncmp(str, "\x1b[C", 3) ||\
 	!ft_strncmp(str, "\t", 2) || !ft_strncmp(str, "\x1b[A", 3) || !ft_strncmp(str, "\x1b[B", 3))
-		return (1);
+		return (0);
 //	{
 //		int k = -1;
 //		while (param->all_com[++k])
@@ -163,9 +169,7 @@ int			key_func(char *str, t_param *param, int len, int *i)
 //		printf("\n|%s|", param->com);
 	else if (!ft_strncmp(str, "\177", 2) && *i > 16)
 		*i -= backspace(param, *i, win.ws_col);
-	else if (!ft_strncmp(str, "\n", 2))
-		return (0);
 	else if (ft_strncmp(str, "\177", 2) && write(1, str, len))
 		st_put(str, param, (*i += len), win.ws_col);
-	return (1);
+	return (0);
 }

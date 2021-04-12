@@ -54,7 +54,8 @@ SRCS	=	ft_strlen.c\
 			get_next_line.c\
 			ft_rhr.c\
 			ft_mstr.c\
-			ft_putchar.c
+			ft_putchar.c\
+			drop_space.c
 
 HEAD	=	libft.h
 NAME	= 	libft.a

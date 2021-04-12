@@ -143,6 +143,33 @@ MiniHell/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniHell.dir/build.make CMakeFiles/MiniHell.dir/build
 .PHONY : MiniHell/fast
 
+libft/drop_space.o: libft/drop_space.c.o
+
+.PHONY : libft/drop_space.o
+
+# target to build an object file
+libft/drop_space.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniHell.dir/build.make CMakeFiles/MiniHell.dir/libft/drop_space.c.o
+.PHONY : libft/drop_space.c.o
+
+libft/drop_space.i: libft/drop_space.c.i
+
+.PHONY : libft/drop_space.i
+
+# target to preprocess a source file
+libft/drop_space.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniHell.dir/build.make CMakeFiles/MiniHell.dir/libft/drop_space.c.i
+.PHONY : libft/drop_space.c.i
+
+libft/drop_space.s: libft/drop_space.c.s
+
+.PHONY : libft/drop_space.s
+
+# target to generate assembly for a file
+libft/drop_space.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniHell.dir/build.make CMakeFiles/MiniHell.dir/libft/drop_space.c.s
+.PHONY : libft/drop_space.c.s
+
 libft/ft_putchar.o: libft/ft_putchar.c.o
 
 .PHONY : libft/ft_putchar.o
@@ -196,6 +223,87 @@ main.s: main.c.s
 main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniHell.dir/build.make CMakeFiles/MiniHell.dir/main.c.s
 .PHONY : main.c.s
+
+other_fun.o: other_fun.c.o
+
+.PHONY : other_fun.o
+
+# target to build an object file
+other_fun.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniHell.dir/build.make CMakeFiles/MiniHell.dir/other_fun.c.o
+.PHONY : other_fun.c.o
+
+other_fun.i: other_fun.c.i
+
+.PHONY : other_fun.i
+
+# target to preprocess a source file
+other_fun.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniHell.dir/build.make CMakeFiles/MiniHell.dir/other_fun.c.i
+.PHONY : other_fun.c.i
+
+other_fun.s: other_fun.c.s
+
+.PHONY : other_fun.s
+
+# target to generate assembly for a file
+other_fun.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniHell.dir/build.make CMakeFiles/MiniHell.dir/other_fun.c.s
+.PHONY : other_fun.c.s
+
+parser/parser.o: parser/parser.c.o
+
+.PHONY : parser/parser.o
+
+# target to build an object file
+parser/parser.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniHell.dir/build.make CMakeFiles/MiniHell.dir/parser/parser.c.o
+.PHONY : parser/parser.c.o
+
+parser/parser.i: parser/parser.c.i
+
+.PHONY : parser/parser.i
+
+# target to preprocess a source file
+parser/parser.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniHell.dir/build.make CMakeFiles/MiniHell.dir/parser/parser.c.i
+.PHONY : parser/parser.c.i
+
+parser/parser.s: parser/parser.c.s
+
+.PHONY : parser/parser.s
+
+# target to generate assembly for a file
+parser/parser.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniHell.dir/build.make CMakeFiles/MiniHell.dir/parser/parser.c.s
+.PHONY : parser/parser.c.s
+
+parser/pre_parser.o: parser/pre_parser.c.o
+
+.PHONY : parser/pre_parser.o
+
+# target to build an object file
+parser/pre_parser.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniHell.dir/build.make CMakeFiles/MiniHell.dir/parser/pre_parser.c.o
+.PHONY : parser/pre_parser.c.o
+
+parser/pre_parser.i: parser/pre_parser.c.i
+
+.PHONY : parser/pre_parser.i
+
+# target to preprocess a source file
+parser/pre_parser.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniHell.dir/build.make CMakeFiles/MiniHell.dir/parser/pre_parser.c.i
+.PHONY : parser/pre_parser.c.i
+
+parser/pre_parser.s: parser/pre_parser.c.s
+
+.PHONY : parser/pre_parser.s
+
+# target to generate assembly for a file
+parser/pre_parser.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniHell.dir/build.make CMakeFiles/MiniHell.dir/parser/pre_parser.c.s
+.PHONY : parser/pre_parser.c.s
 
 termcap/dop_func.o: termcap/dop_func.c.o
 
@@ -287,12 +395,24 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... MiniHell"
+	@echo "... libft/drop_space.o"
+	@echo "... libft/drop_space.i"
+	@echo "... libft/drop_space.s"
 	@echo "... libft/ft_putchar.o"
 	@echo "... libft/ft_putchar.i"
 	@echo "... libft/ft_putchar.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... other_fun.o"
+	@echo "... other_fun.i"
+	@echo "... other_fun.s"
+	@echo "... parser/parser.o"
+	@echo "... parser/parser.i"
+	@echo "... parser/parser.s"
+	@echo "... parser/pre_parser.o"
+	@echo "... parser/pre_parser.i"
+	@echo "... parser/pre_parser.s"
 	@echo "... termcap/dop_func.o"
 	@echo "... termcap/dop_func.i"
 	@echo "... termcap/dop_func.s"

@@ -78,10 +78,22 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/Users/dpatrica/CLionProjects/MiniHell/libft/drop_space.c">
+			<Option target="MiniHell"/>
+		</Unit>
 		<Unit filename="/Users/dpatrica/CLionProjects/MiniHell/libft/ft_putchar.c">
 			<Option target="MiniHell"/>
 		</Unit>
 		<Unit filename="/Users/dpatrica/CLionProjects/MiniHell/main.c">
+			<Option target="MiniHell"/>
+		</Unit>
+		<Unit filename="/Users/dpatrica/CLionProjects/MiniHell/other_fun.c">
+			<Option target="MiniHell"/>
+		</Unit>
+		<Unit filename="/Users/dpatrica/CLionProjects/MiniHell/parser/parser.c">
+			<Option target="MiniHell"/>
+		</Unit>
+		<Unit filename="/Users/dpatrica/CLionProjects/MiniHell/parser/pre_parser.c">
 			<Option target="MiniHell"/>
 		</Unit>
 		<Unit filename="/Users/dpatrica/CLionProjects/MiniHell/termcap/dop_func.c">

@@ -4,8 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "/Users/dpatrica/CLionProjects/MiniHell/libft/drop_space.c" "/Users/dpatrica/CLionProjects/MiniHell/cmake-build-debug/CMakeFiles/MiniHell.dir/libft/drop_space.c.o"
   "/Users/dpatrica/CLionProjects/MiniHell/libft/ft_putchar.c" "/Users/dpatrica/CLionProjects/MiniHell/cmake-build-debug/CMakeFiles/MiniHell.dir/libft/ft_putchar.c.o"
   "/Users/dpatrica/CLionProjects/MiniHell/main.c" "/Users/dpatrica/CLionProjects/MiniHell/cmake-build-debug/CMakeFiles/MiniHell.dir/main.c.o"
+  "/Users/dpatrica/CLionProjects/MiniHell/other_fun.c" "/Users/dpatrica/CLionProjects/MiniHell/cmake-build-debug/CMakeFiles/MiniHell.dir/other_fun.c.o"
+  "/Users/dpatrica/CLionProjects/MiniHell/parser/parser.c" "/Users/dpatrica/CLionProjects/MiniHell/cmake-build-debug/CMakeFiles/MiniHell.dir/parser/parser.c.o"
+  "/Users/dpatrica/CLionProjects/MiniHell/parser/pre_parser.c" "/Users/dpatrica/CLionProjects/MiniHell/cmake-build-debug/CMakeFiles/MiniHell.dir/parser/pre_parser.c.o"
   "/Users/dpatrica/CLionProjects/MiniHell/termcap/dop_func.c" "/Users/dpatrica/CLionProjects/MiniHell/cmake-build-debug/CMakeFiles/MiniHell.dir/termcap/dop_func.c.o"
   "/Users/dpatrica/CLionProjects/MiniHell/termcap/key_function.c" "/Users/dpatrica/CLionProjects/MiniHell/cmake-build-debug/CMakeFiles/MiniHell.dir/termcap/key_function.c.o"
   "/Users/dpatrica/CLionProjects/MiniHell/termcap/termcap.c" "/Users/dpatrica/CLionProjects/MiniHell/cmake-build-debug/CMakeFiles/MiniHell.dir/termcap/termcap.c.o"
