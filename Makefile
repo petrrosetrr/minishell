@@ -29,7 +29,7 @@ LIBFT	=	./libft/libft.a
 
 OBJS    =   $(SRCS:.c=.o)
 
-GCC     =   gcc -Wall -Wextra -g #-Werror
+GCC     =   gcc -Wall -Wextra -g #-Werror #-fsanitize=address
 
 RM      =   rm -f
 

@@ -12,13 +12,13 @@
 
 #include "builtins.h"
 
-int pwd_builtin(void)
+void pwd_builtin(void)
 {
 	char buf[PATH_MAX + 1];
 
 	getcwd(buf, PATH_MAX + 1);
 	ft_putstr_fd(buf, OUT);
 	ft_putstr_fd("\n", OUT);
-	return (0);
+	errno = 0;
 }
 

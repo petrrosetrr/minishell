@@ -12,7 +12,7 @@
 
 #include "builtins.h"
 
-int echo_builtin(char **args)
+void echo_builtin(char **args)
 {
 	int i;
 	int n_flag;
@@ -33,5 +33,5 @@ int echo_builtin(char **args)
 	}
 	if (n_flag)
 		ft_putstr_fd("\n", OUT);
-	return (1);
+	errno = 0;
 }

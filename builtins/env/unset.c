@@ -14,11 +14,12 @@
 
 int 		unset_print_error(char *key, int error_code)
 {
-	if (error_code == 1)
+	if (error_code == INVALID_ID)
 	{
 		ft_putstr_fd("minishell: unset: `", ERR);
 		ft_putstr_fd(key, ERR);
 		ft_putstr_fd("': not a valid identifier\n", ERR);
+		errno = INVALID_ID;
 	}
 	return (error_code);
 }
@@ -49,7 +50,7 @@ int			unset_valid(char *key)
 	return (0);
 }
 
-int			unset_builtin(t_keyval **env_head, char **args)
+void		unset_builtin(t_keyval **env_head, char **args)
 {
 	size_t i;
 
@@ -59,9 +60,11 @@ int			unset_builtin(t_keyval **env_head, char **args)
 		while(args[i])
 		{
 			if(unset_valid(args[i]) == 0)
+			{
 				env_delete(env_head, args[i]);
+				errno = 0;
+			}
 			i++;
 		}
 	}
-	return (1);
 }

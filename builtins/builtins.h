@@ -13,13 +13,12 @@
 #ifndef BUILTINS_H
 # define BUILTINS_H
 # include "../libft/libft.h"
+# include "../utils/utils.h"
 # include <unistd.h>
 # include <stdio.h>
 # include <limits.h>
-#include <sys/syslimits.h>
 # include <stdlib.h>
 # include <errno.h>
-# include "../utils/utils.h"
 # define IN 0
 # define OUT 1
 # define ERR 2
@@ -41,14 +40,16 @@ size_t				env_length(t_keyval *env_head);
 t_keyval			**env_to_array(t_keyval *env_head);
 t_keyval			*env_split(char *env_str);
 t_keyval			*env_contains(t_keyval *env_head, char *key);
-void				env_set(t_keyval *env_head, char *key, char *value, int plus);
+void				env_set(t_keyval **env_head, char *key, char *value, int plus);
 void				env_delete(t_keyval **env_head, char *key);
+void				env_free_one(t_keyval *env_item);
 
-int					cd_builtin(t_keyval **env_head,char **args);
-int					echo_builtin(char **args);
-int					env_builtin(t_keyval **env_head);
+void				cd_builtin(t_keyval **env_head,char **args);
+void				echo_builtin(char **args);
+void				env_builtin(t_keyval *env_head);
 void				exit_builtin(char **args);
-int					pwd_builtin(void);
-int					export_builtin(t_keyval **env_head, char  **args);
-int					unset_builtin(t_keyval **env_head, char **args);
+void				pwd_builtin(void);
+void				export_builtin(t_keyval **env_head, char  **args);
+void				unset_builtin(t_keyval **env_head, char **args);
+
 #endif

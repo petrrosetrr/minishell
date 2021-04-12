@@ -46,12 +46,12 @@ t_keyval	*env_lst_new(char *key, char *value)
 {
 	t_keyval *new;
 
-	if (!(new = malloc(sizeof (t_keyval))))
+	if ((new = malloc(sizeof (t_keyval))) == NULL)
 		return (NULL);
 	new->key = key;
 	new->value = value;
 	new->next = NULL;
-	return new;
+	return (new);
 }
 
 t_keyval	*env_split(char *env_str)
@@ -87,25 +87,32 @@ t_keyval	*env_contains(t_keyval *env_head, char *key)
 	return (NULL);
 }
 
-void		env_lst_addback(t_keyval *env_head, t_keyval *new)
+void		env_lst_addback(t_keyval **env_head, t_keyval *new)
 {
-	if (env_head != NULL && new != NULL)
+	t_keyval *tmp;
+
+	tmp = *env_head;
+	if (env_head != NULL && *env_head != NULL && new != NULL)
 	{
 		new->next = NULL;
-		while (env_head->next)
-			env_head = env_head->next;
-		env_head->next = new;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = new;
+	}
+	else if (new != NULL)
+	{
+		*env_head = new;
 	}
 }
 
-void		env_set(t_keyval *env_head, char *key, char *value, int plus)
+void		env_set(t_keyval **env_head, char *key, char *value, int plus)
 {
 	t_keyval *tmp;
 	char	 *new_value;
 
-	if ((tmp = env_contains(env_head, key)) != NULL)
+	if ((tmp = env_contains(*env_head, key)) != NULL)
 	{
-		if (tmp->value != NULL)
+		if (value != NULL)
 		{
 			if (plus)
 			{
@@ -115,9 +122,9 @@ void		env_set(t_keyval *env_head, char *key, char *value, int plus)
 			else
 				new_value = value;
 			free(tmp->value);
-			free(key);
 			tmp->value = new_value;
 		}
+		free(key);
 	}
 	else
 		env_lst_addback(env_head, env_lst_new(key, value));
@@ -164,14 +171,14 @@ t_keyval	*env_to_list(char **env)
 {
 	t_keyval	*list_head;
 	int			i;
-	errno = 13;
+
 	if (env != NULL)
 	{
 		i = 1;
 		list_head = env_split(env[0]);
 		while (env[i] != NULL)
 		{
-			env_lst_addback(list_head, env_split(env[i]));
+			env_lst_addback(&list_head, env_split(env[i]));
 			i++;
 		}
 		return (list_head);
@@ -179,7 +186,7 @@ t_keyval	*env_to_list(char **env)
 	return (NULL);
 }
 
-int			env_builtin(t_keyval *env_head)
+void		env_builtin(t_keyval *env_head)
 {
 	while(env_head != NULL)
 	{
@@ -192,5 +199,5 @@ int			env_builtin(t_keyval *env_head)
 		}
 		env_head = env_head->next;
 	}
-	return (1);
+	errno = 0;
 }

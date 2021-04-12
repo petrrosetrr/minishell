@@ -15,9 +15,6 @@
 // TODO: Обработка ошибок для $?
 // TODO: Пересмотреть видос
 
-// TODO: Все функции которые только редактируют value переменных в env получают укзатель
-// TODO: Все функции которые добавляют / удаляют переменные в env получют укзатель на указатель
-
 void cd_errors(int error_code, char *path)
 {
 	if (error_code == 1)
@@ -39,18 +36,20 @@ void cd_errors(int error_code, char *path)
 	errno = 1;
 }
 
-void cd_home(t_keyval *env_head)
+void cd_home(t_keyval **env_head)
 {
 	char *home;
 	char buf[PATH_MAX + 1];
 
-	if((home = env_contains(env_head, "HOME")->value) != NULL)
+	if (env_contains(*env_head, "HOME") != NULL &&
+	(home = env_contains(*env_head, "HOME")->value) != NULL)
 	{
 		getcwd(buf, PATH_MAX + 1);
 		if (!chdir(home))
 		{
 			env_set(env_head, ft_strdup("OLDPWD"), ft_strdup(buf), 0);
 			env_set(env_head, ft_strdup("PWD"), ft_strdup(home), 0);
+			errno = 0;
 		}
 		else
 			cd_errors(-1, home);
@@ -59,18 +58,20 @@ void cd_home(t_keyval *env_head)
 		cd_errors(1, NULL);
 }
 
-void cd_prev(t_keyval *env_head)
+void cd_prev(t_keyval **env_head)
 {
 	char *prev;
 	char buf[PATH_MAX + 1];
 
-	if((prev = env_contains(env_head, "OLDPWD")->value) != NULL)
+	if(env_contains(*env_head, "OLDPWD") != NULL &&
+	(prev = env_contains(*env_head, "OLDPWD")->value) != NULL)
 	{
 		getcwd(buf, PATH_MAX + 1);
 		if (!chdir(prev))
 		{
 			env_set(env_head, ft_strdup("OLDPWD"), ft_strdup(buf), 0);
 			env_set(env_head, ft_strdup("PWD"), ft_strdup(prev), 0);
+			errno = 0;
 		}
 		else
 			cd_errors(-1, prev);
@@ -79,7 +80,7 @@ void cd_prev(t_keyval *env_head)
 		cd_errors(2, NULL);
 }
 
-void cd_path(t_keyval *env_head, char *path)
+void cd_path(t_keyval **env_head, char *path)
 {
 	char buf[PATH_MAX + 1];
 
@@ -88,12 +89,13 @@ void cd_path(t_keyval *env_head, char *path)
 	{
 		env_set(env_head, ft_strdup("OLDPWD"), ft_strdup(buf), 0);
 		env_set(env_head, ft_strdup("PWD"), ft_strdup(path), 0);
+		errno = 0;
 	}
 	else
 		cd_errors(-1, path);
 }
 
-int cd_builtin(t_keyval **env_head, char **args)
+void cd_builtin(t_keyval **env_head, char **args)
 {
 	if (args != NULL)
 	{
@@ -104,5 +106,4 @@ int cd_builtin(t_keyval **env_head, char **args)
 		else
 			cd_path(env_head, args[0]);
 	}
-	return (1);
 }

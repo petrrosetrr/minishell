@@ -12,7 +12,7 @@
 
 #include "../builtins.h"
 
-t_keyval	**export__sort(t_keyval *env_head)
+t_keyval	**export_sort(t_keyval *env_head)
 {
 	t_keyval	**env;
 	t_keyval	*tmp;
@@ -58,15 +58,17 @@ void		export_print(t_keyval **env)
 		ft_putstr_fd("\n", OUT);
 		i++;
 	}
+	free(env);
 }
 
 int 		export_print_error(char *key, int error_code)
 {
-	if (error_code == 1)
+	if (error_code == INVALID_ID)
 	{
 		ft_putstr_fd("minishell: export: `", ERR);
 		ft_putstr_fd(key, ERR);
 		ft_putstr_fd("': not a valid identifier\n", ERR);
+		errno = INVALID_ID;
 	}
 	return (error_code);
 }
@@ -100,7 +102,7 @@ int			export_valid(char *key)
 	return (0);
 }
 
-int			export_set(t_keyval *env_head, char *env_str)
+int			export_set(t_keyval **env_head, char *env_str)
 {
 	t_keyval	*tmp;
 	int			ret;
@@ -111,37 +113,37 @@ int			export_set(t_keyval *env_head, char *env_str)
 		if (tmp->key[ft_strlen(tmp->key) - 1] == '+')
 		{
 			tmp->key[ft_strlen(tmp->key) - 1] = '\0';
-			env_set(env_head, tmp->key, tmp->value, 1);
+			env_set(env_head, ft_strdup(tmp->key), ft_strdup(tmp->value), 1);
 		}
 		else
 		{
-			env_set(env_head, tmp->key, tmp->value, 0);
+			env_set(env_head, ft_strdup(tmp->key), ft_strdup(tmp->value), 0);
 		}
+		errno = 0;
 	}
-	free(tmp);
+	env_free_one(tmp);
 	return (ret);
 }
 
-int			export_builtin(t_keyval **env_head, char  **args)
+void		export_builtin(t_keyval **env_head, char  **args)
 {
 	size_t i;
 
 	if (env_head != NULL)
 	{
-		if (ft_arrlen(args) == 0)
+		if (*env_head != NULL && ft_arrlen(args) == 0)
 		{
-			export_print(export__sort(*env_head));
+			export_print(export_sort(*env_head));
+			errno = 0;
 		}
-		else
+		else if (ft_arrlen(args) > 0)
 		{
 			i = 0;
 			while(args[i] != NULL)
 			{
-				export_set(*env_head, args[i]);
+				export_set(env_head, args[i]);
 				i++;
 			}
 		}
-		return (1);
 	}
-	return (0);
 }
