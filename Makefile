@@ -16,7 +16,10 @@ SRCS	=	./main.c\
 			./termcap/dop_func.c\
 			./parser/parser.c\
 			./parser/pre_parser.c\
-			./other_fun.c
+			./other_fun.c\
+			./parser/list_fun.c\
+			./parser/join_malloc.c\
+			./parser/pars_spec.c
 
 LIBSRCS	=	./libft/ft_strlen.c\
 			./libft/ft_memset.c\

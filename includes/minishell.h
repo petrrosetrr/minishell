@@ -7,6 +7,13 @@
 # define EXIT 2
 # define CTRL_C 3
 
+# define HARD_RDR 1
+# define EZ_RDR 2
+
+#define RDR_OUT 1
+#define RDR_IN 2
+#define PIPE 3
+
 #include "../libft/libft.h"
 #include <unistd.h>
 #include <stdio.h>
@@ -46,5 +53,10 @@ char		*delete_last_char(char *com);
 int			parser(t_param *param);
 int			pre_parser(t_param *param);
 void 		freesher(t_param *param);
+t_pars_list	*init_pars_list(void);
+t_rdr		*init_rdr(void);
+int			add_first_array(t_pars_list *pars_list);
+int			add_array(char **array, int i);
+int			join_symbol(char *str, char symbol);
 
 #endif

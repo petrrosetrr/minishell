@@ -4,46 +4,74 @@
 
 #include "../includes/minishell.h"
 
+static int pars_str(t_param *param, t_pars_list *pars_list, int *i, int *arg)
+{
+	if (pars_list->args == NULL)
+		add_first_array(pars_list);
+	else if (pars_list->args[*arg] == NULL)
+		add_array(pars_list->args, *arg);
+	while (param->com[*i] && !ft_rhr(";'\"\\$|<>", param->com[*i]))
+	{
+		join_symbol(pars_list->args[*arg], param->com[*i]);
+		printf("args:%s\n", pars_list->args[*arg]);
+		printf("argD:%d\n", *arg);
+		(*i)++;
+	}
+	return (0);
+}
+
+static int parser_2(t_param *param, t_pars_list *pars_list, int *i, int *arg)
+{
+	while (param->com[*i])
+	{
+		if (param->com[*i] == ';')
+			pars_str(param, pars_list, i, arg);
+		else if (param->com[*i] == '\'') // хард кавычка '
+			pars_str(param, pars_list, i, arg);
+		else if (param->com[*i] == '"')
+			pars_str(param, pars_list, i, arg);
+		else if (param->com[*i] == '\\')
+			pars_str(param, pars_list, i, arg);
+		else if (param->com[*i] == '$')
+			pars_str(param, pars_list, i, arg);
+		else if (param->com[*i] == '|')
+			pars_str(param, pars_list, i, arg);
+		else if (param->com[*i] == '>')
+			pars_str(param, pars_list, i, arg);
+		else if (param->com[*i] == '<')
+			pars_str(param, pars_list, i, arg);
+		else if (param->com[*i] == ' ' && ++(*arg))
+			while (param->com[*i] == ' ')
+				(*i)++;
+		else
+			pars_str(param, pars_list, i, arg);
+	}
+	return (0);
+}
+
 int parser(t_param *param)
 {
 	int i;
-	int start;
-	int flag;
+	int arg;
+	t_pars_list *pars_list;
+	t_pars_list *temp_pars_list;
 
+	pars_list = init_pars_list();
+	temp_pars_list = pars_list;
 	if (pre_parser(param))
 		return (1);
-/*	param->com -= (i = drop_space(&param->com));
-	start = i;
-	flag = 0;
+	arg = 0;
+	i = 0;
 	while (param->com[i])
 	{
-		if (param->com[i] != ' ')
-			flag = 1;
-		else if (param->com[i] == (char)39) // хард кавычка '
-			;
-		else if (param->com[i] == '"')
-			;
-		else if (param->com[i] == '\\')
-			;
-		else if (param->com[i] == '$')
-			;
-		else if (param->com[i] == '|')
-			;
-		else if (param->com[i] == '>')
-			;
-		else if (param->com[i] == '<')
-			;
-		else if (param->com[i] == ' ' && flag)
-		{
-			pars(start, i);
-			while (param->com[i] == ' ')
-				i++;
-			start = i;
-			continue ;
-			//парсим аргумент и дропаем лишние пробелы;
-		}
-		i++;
-	}*/
+		if (param->com[i] == ' ')
+			i++;
+		else
+			parser_2(param, pars_list, &i, &arg);
+	}
+	i = -1;
+	while (pars_list->args[++i])
+		printf("%s\n", pars_list->args[i]);
 	//парсим одинарный или последний аргумент, если flag == 1;
 	return (0);
 }

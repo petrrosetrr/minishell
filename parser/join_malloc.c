@@ -1,0 +1,67 @@
+//
+// Created by neo on 14.04.2021.
+//
+
+#include "../includes/minishell.h"
+
+int add_array(char **array, int i)
+{
+	char **temp;
+	int k;
+
+	k = -1;
+	if (!array)
+		return (1);
+	temp = array;
+	array = (char**)malloc(sizeof(char*) * (i + 2));
+	while (temp[++k])
+	{
+		array[k] = temp[k];
+		free(temp[k]);
+	}
+	free(temp);
+	array[k++] = (char*)malloc(sizeof(char) * 2);
+	array[0][0] = '\0';
+	array[0][1] = '\0';
+	array[k] = NULL;
+	return (0);
+}
+
+int add_first_array(t_pars_list *pars_list)
+{
+	pars_list->args = (char**)malloc(sizeof(char*) * 2);
+	pars_list->args[0] = (char*)malloc(sizeof(char) * 2);
+	pars_list->args[0][0] = '\0';
+	pars_list->args[0][1] = '\0';
+//	pars_list->args[0] = NULL;
+	pars_list->args[1] = NULL;
+	return (0);
+}
+
+int join_symbol(char *str, char symbol)
+{
+	char *temp;
+	char *sym;
+
+	if (!str[0])
+	{
+//		str = (char*)malloc(sizeof(char) * 2);
+		str[0] = symbol;
+//		str[1] = '\0';
+	}
+	else
+	{
+		sym = (char*)malloc(sizeof(char) * 2);
+		sym[0] = symbol;
+		sym[1] = '\0';
+		temp = str;
+		printf("1:%s\n", str);
+		printf("sym1:%s\n", sym);
+		str = ft_strjoin(str, sym);
+		printf("2:%s\n", str);
+//		write(1, "1\n", 2);
+		free(temp);
+		free(sym);
+	}
+	return (0);
+}
