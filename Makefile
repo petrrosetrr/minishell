@@ -10,38 +10,19 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=	builtins/main.c \
-			builtins/cd.c \
-			builtins/echo.c \
-			builtins/env/env.c \
-			builtins/env/export.c \
-			builtins/env/unset.c \
-			builtins/exit.c \
-			builtins/pwd.c \
-			utils/utils.c
-
 NAME    =   minishell
 
-HEAD	=	./builtins/builtins.h \
- 			./utils/utils.h \
+SRCS 	:= $(shell find . -name '*.c')
+
+HEAD	:=	$(shell find . -name '*.h')
 
 LIBFT	=	./libft/libft.a
 
 OBJS    =   $(SRCS:.c=.o)
 
-GCC     =   gcc -Wall -Wextra -g #-Werror #-fsanitize=address
+GCC     =   gcc -Wall -Wextra -g -fsanitize=address #-Werror
 
 RM      =   rm -f
-
-C       =   -c
-
-O       =   -o
-
-
-.PHONY:		all clean fclean re
-
-.c.o:
-			$(GCC) $(C) $< $(O) $(<:.c=.o)
 
 all:		$(NAME)
 
@@ -60,3 +41,11 @@ fclean:		clean
 			make fclean -C ./libft
 
 re:         fclean all
+
+.PHONY:		all clean fclean re
+
+.c.o:
+			$(GCC) -c $< -o $(<:.c=.o)
+
+
+

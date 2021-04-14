@@ -1,46 +1,61 @@
-#include "builtins.h"
+#include "handler/handler.h"
 
 int main(int argc, char **argv, char **env)
 {
-	t_shell shell_vars;
+	// handler init
+	t_keyval *env_list;
+
+	env_list = handler_init(env);
+
+	char *unset_args[2];
+
+	unset_args[0] = "PATH";
+	unset_args[1] = NULL;
 	(void) argc;
-	shell_vars.env = env_to_list(env);
+	char  *arg[3];
 
-	char *args[2];
-	args[0] = "K=EKELKRL";
-	args[1] = NULL;
-	unset_builtin(&shell_vars.env, &argv[1]);
-	unset_builtin(&shell_vars.env, &args[0]);
-	puts("<---------------------------------------------------->");
+	unset_builtin(&env_list, unset_args);
+	arg[0] = ft_strdup("ls");
+	arg[1] = ft_strdup("-la");
+	arg[2] = NULL;
+	env_builtin(env_list);
+	exec(arg, env_list);
 
-	env_builtin(shell_vars.env);
-	puts("<---------------------------------------------------->");
-
-	pwd_builtin();
-	puts("<---------------------------------------------------->");
-
-	export_builtin(&shell_vars.env, NULL);
-	puts("<---------------------------------------------------->");
-
-	export_builtin(&shell_vars.env, &argv[1]);
-	puts("<---------------------------------------------------->");
-
-	export_builtin(&shell_vars.env, NULL);
-	puts("<---------------------------------------------------->");
-
-	env_builtin(shell_vars.env);
-	puts("<---------------------------------------------------->");
-
-	unset_builtin(&shell_vars.env, &argv[1]);
-	puts("<---------------------------------------------------->");
-
-	export_builtin(&shell_vars.env, NULL);
-	puts("<---------------------------------------------------->");
-	export_builtin(&shell_vars.env, &argv[1]);
-	export_builtin(&shell_vars.env, NULL);
-	puts("<---------------------------------------------------->");
-	unset_builtin(&shell_vars.env, &argv[1]);
-	export_builtin(&shell_vars.env, NULL);
+//	char *args[2];
+//	args[0] = "K=EKELKRL";
+//	args[1] = NULL;
+//	unset_builtin(&shell_vars.env, &argv[1]);
+//	unset_builtin(&shell_vars.env, &args[0]);
+//	puts("<---------------------------------------------------->");
+//
+//	env_builtin(shell_vars.env);
+//	puts("<---------------------------------------------------->");
+//
+//	pwd_builtin();
+//	puts("<---------------------------------------------------->");
+//
+//	export_builtin(&shell_vars.env, NULL);
+//	puts("<---------------------------------------------------->");
+//
+//	export_builtin(&shell_vars.env, &argv[1]);
+//	puts("<---------------------------------------------------->");
+//
+//	export_builtin(&shell_vars.env, NULL);
+//	puts("<---------------------------------------------------->");
+//
+//	env_builtin(shell_vars.env);
+//	puts("<---------------------------------------------------->");
+//
+//	unset_builtin(&shell_vars.env, &argv[1]);
+//	puts("<---------------------------------------------------->");
+//
+//	export_builtin(&shell_vars.env, NULL);
+//	puts("<---------------------------------------------------->");
+//	export_builtin(&shell_vars.env, &argv[1]);
+//	export_builtin(&shell_vars.env, NULL);
+//	puts("<---------------------------------------------------->");
+//	unset_builtin(&shell_vars.env, &argv[1]);
+//	export_builtin(&shell_vars.env, NULL);
 
 //	char *args[2];
 //	args[0] = "../";
