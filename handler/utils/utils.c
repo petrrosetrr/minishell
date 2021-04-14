@@ -30,6 +30,20 @@ size_t	ft_arrlen(char **arr)
 	return (i);
 }
 
+void	free_2d(char **arr)
+{
+	size_t i;
+
+	i = 0;
+	if (arr != NULL)
+	{
+		while(arr[i] != NULL)
+			free(arr[i++]);
+	}
+	free(arr);
+	arr = NULL;
+}
+
 int		isdigitstr(char *str)
 {
 	if (!str)
@@ -42,9 +56,12 @@ int		isdigitstr(char *str)
 
 void	*fixed_free(void *content)
 {
-	free(content);
-	content = NULL;
-	return NULL;
+	if (content != NULL)
+	{
+		free(content);
+		content = NULL;
+	}
+	return (NULL);
 }
 
 char	*ft_strndup(const char *s1, size_t length)

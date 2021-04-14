@@ -12,7 +12,7 @@
 
 #ifndef BUILTINS_H
 # define BUILTINS_H
-# include "../libft/libft.h"
+# include "../../libft/libft.h"
 # include "../utils/utils.h"
 # include <unistd.h>
 # include <stdio.h>
@@ -31,10 +31,6 @@ typedef struct		s_keyval
 	struct s_keyval *next;
 }					t_keyval;
 
-typedef struct		s_shell {
-	t_keyval		*env;
-}					t_shell;
-
 t_keyval			*env_to_list(char **env);
 size_t				env_length(t_keyval *env_head);
 t_keyval			**env_to_array(t_keyval *env_head);
@@ -44,6 +40,7 @@ void				env_set(t_keyval **env_head, char *key, char *value, int plus);
 void				env_delete(t_keyval **env_head, char *key);
 void				env_free_one(t_keyval *env_item);
 
+//builtins
 void				cd_builtin(t_keyval **env_head,char **args);
 void				echo_builtin(char **args);
 void				env_builtin(t_keyval *env_head);
