@@ -39,9 +39,9 @@ static void	term_on_off(struct termios *term, int flag)
 	if (!flag)
 	{
 		tcgetattr(0, term);
-		term->c_lflag |= ~(ECHO);
-		term->c_lflag |= ~(ICANON);
-		term->c_lflag |= ~(ISIG);
+		term->c_lflag |= ECHO;
+		term->c_lflag |= ICANON;
+		term->c_lflag |= ISIG;
 		tcsetattr(0, TCSANOW, term);
 	}
 	else
@@ -66,17 +66,22 @@ static int 	termcap_2(t_param *param, struct termios *term)
 //	kek = ft_strdup("\033[01;31m\👹Mini🔥Hell👺☞\033[01;32m\ ");
 	n = 0;
 	str[0] = '\0';
-	while (n != EXIT && write(1, kek, 40))
+	while (n != EXIT) // вынести за условие
 	{
-		tputs(save_cursor, 1, ft_putchar);
 		if (n && n != CTRL_C && param->com && param->com[0])
 		{
 //			write(1, "1\n", 2);
 			term_on_off(term, 0);
 			pre_pars(param);
-			parser(param);
+			if (parser(param))
+				n = 0; // n = 0 и term_on_off
 			term_on_off(term, 1);
+			if (!n)
+				continue ;
 		}
+		write(1, kek, 40);
+		tputs(save_cursor, 1, ft_putchar);
+//		overfree(param->com, param->com_tmp, NULL);
 		if (param->com)
 			free(param->com);
 		param->com = NULL;
@@ -95,20 +100,20 @@ int			termcap(t_param *param)
 {
 	struct termios	term;
 
-//	term_on_off(&term, 1);
-	tcgetattr(0, &term);
-	term.c_lflag &= ~(ECHO); // -ехо
-	term.c_lflag &= ~(ICANON); // -посимвольно
-	term.c_lflag &= ~(ISIG); // -сигналы / отключить перед парсингом!
-	tcsetattr(0, TCSANOW, &term);
+	term_on_off(&term, 1);
+//	tcgetattr(0, &term);
+//	term.c_lflag &= ~(ECHO); // -ехо
+//	term.c_lflag &= ~(ICANON); // -посимвольно
+//	term.c_lflag &= ~(ISIG); // -сигналы / отключить перед парсингом!
+//	tcsetattr(0, TCSANOW, &term);
 	tgetent(0, "xterm-256color"); // добавить адаптивный терминал
 	termcap_2(param, &term);
-	tcgetattr(0, &term);
-	term.c_lflag |= ~(ECHO);
-	term.c_lflag |= ~(ICANON);
-	term.c_lflag |= ~(ISIG);
-	tcsetattr(0, TCSANOW, &term);
-//	term_on_off(&term, 0);
+//	tcgetattr(0, &term);
+//	term.c_lflag |= ~(ECHO);
+//	term.c_lflag |= ~(ICANON);
+//	term.c_lflag |= ~(ISIG);
+//	tcsetattr(0, TCSANOW, &term);
+	term_on_off(&term, 0);
 	freesher(param);
 	return (0);
 }

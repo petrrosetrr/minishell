@@ -197,6 +197,33 @@ libft/ft_putchar.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniHell.dir/build.make CMakeFiles/MiniHell.dir/libft/ft_putchar.c.s
 .PHONY : libft/ft_putchar.c.s
 
+libft/overfree.o: libft/overfree.c.o
+
+.PHONY : libft/overfree.o
+
+# target to build an object file
+libft/overfree.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniHell.dir/build.make CMakeFiles/MiniHell.dir/libft/overfree.c.o
+.PHONY : libft/overfree.c.o
+
+libft/overfree.i: libft/overfree.c.i
+
+.PHONY : libft/overfree.i
+
+# target to preprocess a source file
+libft/overfree.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniHell.dir/build.make CMakeFiles/MiniHell.dir/libft/overfree.c.i
+.PHONY : libft/overfree.c.i
+
+libft/overfree.s: libft/overfree.c.s
+
+.PHONY : libft/overfree.s
+
+# target to generate assembly for a file
+libft/overfree.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MiniHell.dir/build.make CMakeFiles/MiniHell.dir/libft/overfree.c.s
+.PHONY : libft/overfree.c.s
+
 main.o: main.c.o
 
 .PHONY : main.o
@@ -401,6 +428,9 @@ help:
 	@echo "... libft/ft_putchar.o"
 	@echo "... libft/ft_putchar.i"
 	@echo "... libft/ft_putchar.s"
+	@echo "... libft/overfree.o"
+	@echo "... libft/overfree.i"
+	@echo "... libft/overfree.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

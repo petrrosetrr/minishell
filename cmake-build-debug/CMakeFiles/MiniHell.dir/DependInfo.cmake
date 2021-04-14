@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_C
   "/Users/dpatrica/CLionProjects/MiniHell/libft/drop_space.c" "/Users/dpatrica/CLionProjects/MiniHell/cmake-build-debug/CMakeFiles/MiniHell.dir/libft/drop_space.c.o"
   "/Users/dpatrica/CLionProjects/MiniHell/libft/ft_putchar.c" "/Users/dpatrica/CLionProjects/MiniHell/cmake-build-debug/CMakeFiles/MiniHell.dir/libft/ft_putchar.c.o"
+  "/Users/dpatrica/CLionProjects/MiniHell/libft/overfree.c" "/Users/dpatrica/CLionProjects/MiniHell/cmake-build-debug/CMakeFiles/MiniHell.dir/libft/overfree.c.o"
   "/Users/dpatrica/CLionProjects/MiniHell/main.c" "/Users/dpatrica/CLionProjects/MiniHell/cmake-build-debug/CMakeFiles/MiniHell.dir/main.c.o"
   "/Users/dpatrica/CLionProjects/MiniHell/other_fun.c" "/Users/dpatrica/CLionProjects/MiniHell/cmake-build-debug/CMakeFiles/MiniHell.dir/other_fun.c.o"
   "/Users/dpatrica/CLionProjects/MiniHell/parser/parser.c" "/Users/dpatrica/CLionProjects/MiniHell/cmake-build-debug/CMakeFiles/MiniHell.dir/parser/parser.c.o"

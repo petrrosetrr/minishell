@@ -13,7 +13,7 @@ void freesher(t_param *param)
 		free(param->com);
 	if (param->com_tmp)
 		free(param->com_tmp);
-	while (param->all_com[++i])
+	while (param->all_com && param->all_com[++i])
 		free(param->all_com[i]);
 	if (param->all_com)
 		free(param->all_com);

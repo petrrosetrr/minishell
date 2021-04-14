@@ -67,17 +67,10 @@ static int	up_down(t_param *param, int i, int ws_col, int flag)
 	if (up)
 		i = up_down_more(i, ws_col, up);
 	else
-	{
-//		int kek = i + 10;
-//		while (kek--)
-//			tputs(cursor_left, 1, ft_putchar);
-//		kek = 20;
-//		while (kek--)
-//			tputs(cursor_right, 1, ft_putchar);
 		tputs(restore_cursor, 1, ft_putchar);
-	}
 	if (!flag)
 	{
+//		overfree(param->com, NULL, NULL);
 		if (param->com)
 			free(param->com);
 		param->com = ft_strdup(param->all_com[--param->cur]);
@@ -88,6 +81,7 @@ static int	up_down(t_param *param, int i, int ws_col, int flag)
 	{
 		if (++param->cur < param->last)
 		{
+//			overfree(param->com, NULL, NULL);
 			if (param->com)
 				free(param->com);
 			param->com = ft_strdup(param->all_com[param->cur]);
@@ -96,6 +90,7 @@ static int	up_down(t_param *param, int i, int ws_col, int flag)
 		}
 		else
 		{
+//			overfree(param->com, NULL, NULL);
 			if (param->com)
 				free(param->com);
 			param->com = NULL;
@@ -110,7 +105,6 @@ static int	up_down(t_param *param, int i, int ws_col, int flag)
 	while (i--)
 		tputs(delete_character, 1, ft_putchar);
 	return (16 + (flag && param->cur == param->last && !param->com_tmp ? 0 : up));
-//	return (16 + up);
 }
 
 static void	st_put(char *str, t_param *param, int i, int ws_col)
@@ -148,7 +142,7 @@ int			key_func(char *str, t_param *param, int len, int *i)
 
 	ioctl(1, TIOCGWINSZ, &win);
 	str[len] = '\0';
-	if (!ft_strncmp(str, "\n", 2))
+	if (!ft_strncmp(str, "\n", 2) && write(1, "\n", 1))
 		return (1);
 	else if (!ft_strncmp(str, "\4", 1))
 		return (EXIT);
@@ -161,12 +155,6 @@ int			key_func(char *str, t_param *param, int len, int *i)
 	else if (!ft_strncmp(str, "\x1b[D", 3) || !ft_strncmp(str, "\x1b[C", 3) ||\
 	!ft_strncmp(str, "\t", 2) || !ft_strncmp(str, "\x1b[A", 3) || !ft_strncmp(str, "\x1b[B", 3))
 		return (0);
-//	{
-//		int k = -1;
-//		while (param->all_com[++k])
-//			printf("\n|%s|\n", param->all_com[k]);
-//	}
-//		printf("\n|%s|", param->com);
 	else if (!ft_strncmp(str, "\177", 2) && *i > 16)
 		*i -= backspace(param, *i, win.ws_col);
 	else if (ft_strncmp(str, "\177", 2) && write(1, str, len))

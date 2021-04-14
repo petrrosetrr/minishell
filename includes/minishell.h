@@ -26,6 +26,19 @@ typedef struct	s_param
 	int 	cur;
 	int		last;
 }				t_param;
+typedef struct	s_rdr
+{
+	int				type;
+	char			*f_name;
+	struct s_rdr	*next;
+}					t_rdr;
+typedef struct	s_pars_list
+{
+	char				**args;
+	t_rdr				*next_rdr_out;
+	t_rdr				*next_rdr_in;
+	struct s_pars_list	*next_pipe;
+}				t_pars_list;
 
 int			termcap(t_param *param);
 int			key_func(char *str, t_param *param, int len, int *i);

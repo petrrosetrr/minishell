@@ -67,5 +67,6 @@ int			ft_rhr(const char *s, int c);
 int			ft_mstr(const char *str1, const char *str2);
 int			ft_putchar(int c);
 int			drop_space(char **map);
+int			overfree(char *str1, char *str2, char *str3);
 
 #endif

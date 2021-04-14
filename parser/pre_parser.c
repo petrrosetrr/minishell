@@ -7,12 +7,54 @@
 int pre_parser(t_param *param)
 {
 	int i;
-	int valid;
+	char *error;
 
-	valid = 0;
+	error = NULL;
+//	param->com -= (i = drop_space(&param->com));
 	i = drop_space(&param->com);
+	if (*param->com == ';' && *(param->com + 1) == ';')
+		error = "\033[01;34m\MiniHell: syntax error near unexpected token `;;'\n";
+	else if (*param->com == ';')
+		error = "\033[01;34m\MiniHell: syntax error near unexpected token `;'\n";
+	else if (*param->com == '.' && ++i)
+	{
+		param->com++;
+		i += drop_space(&param->com);
+		if (!*param->com)
+			error = "\033[01;34m\MiniHell: .: filename argument required\n.: usage: . filename [arguments]\n";
+		else if ((param->com -= i))
+			i = drop_space(&param->com);
+	}
+	while (!error && *param->com && ++i)
+	{
+		if (*param->com == ')')
+			error = "\033[01;34m\MiniHell: syntax error near unexpected token `)'\n";
+		else if (*param->com == ';' && *(param->com + 1) == ';')
+			error = "\033[01;34m\MiniHell: syntax error near unexpected token `;;'\n";
+		param->com++;
+	}
+//	else if (param->com[i] == ';')
+//		error = "\033[01;34m\MiniHell: \n";
+//	else if (param->com[i] == ';')
+//		error = "\033[01;34m\MiniHell: \n";
+//	else if (param->com[i] == ';')
+//		error = "\033[01;34m\MiniHell: \n";
+//	else if (param->com[i] == ';')
+//		error = "\033[01;34m\MiniHell: \n";
+//	else if (param->com[i] == ';')
+//		error = "\033[01;34m\MiniHell: \n";
+//	else if (param->com[i] == ';')
+//		error = "\033[01;34m\MiniHell: \n";
+//	else if (param->com[i] == ';')
+//		error = "\033[01;34m\MiniHell: \n";
+//	else if (param->com[i] == ';')
+//		error = "\033[01;34m\MiniHell: \n";
+//	else if (param->com[i] == ';')
+//		error = "\033[01;34m\MiniHell: \n";
+//	else if (param->com[i] == ';')
+//		error = "\033[01;34m\MiniHell: \n";
+//	else if (param->com[i] == ';')
+//		error = "\033[01;34m\MiniHell: \n";
 	param->com -= i;
-	if (param->com[i] == ';')
-		valid = write(1, "\nMiniHell: syntax error near unexpected token `;'", 49);
-	return (valid);
+	return (error ? (int)(write(1, error, ft_strlen(error))) : 0);
 }
