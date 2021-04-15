@@ -70,9 +70,9 @@ static int	up_down(t_param *param, int i, int ws_col, int flag)
 		tputs(restore_cursor, 1, ft_putchar);
 	if (!flag)
 	{
-//		overfree(param->com, NULL, NULL);
-		if (param->com)
-			free(param->com);
+		overfree(&param->com, NULL, NULL);
+//		if (param->com)
+//			free(param->com);
 		param->com = ft_strdup(param->all_com[--param->cur]);
 		up = ft_strlen(param->com);
 		write(1, param->com, up);
@@ -81,19 +81,19 @@ static int	up_down(t_param *param, int i, int ws_col, int flag)
 	{
 		if (++param->cur < param->last)
 		{
-//			overfree(param->com, NULL, NULL);
-			if (param->com)
-				free(param->com);
+			overfree(&param->com, NULL, NULL);
+//			if (param->com)
+//				free(param->com);
 			param->com = ft_strdup(param->all_com[param->cur]);
 			up = ft_strlen(param->com);
 			write(1, param->com, up);
 		}
 		else
 		{
-//			overfree(param->com, NULL, NULL);
-			if (param->com)
-				free(param->com);
-			param->com = NULL;
+			overfree(&param->com, NULL, NULL);
+//			if (param->com)
+//				free(param->com);
+//			param->com = NULL;
 			if (param->com_tmp)
 			{
 				param->com = ft_strdup(param->com_tmp);

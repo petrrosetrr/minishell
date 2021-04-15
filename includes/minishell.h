@@ -56,7 +56,7 @@ void 		freesher(t_param *param);
 t_pars_list	*init_pars_list(void);
 t_rdr		*init_rdr(void);
 int			add_first_array(t_pars_list *pars_list);
-int			add_array(char **array, int i);
-int			join_symbol(char *str, char symbol);
+int			add_array(char ***array, int i);
+int			join_symbol(char **str, char symbol);
 
 #endif

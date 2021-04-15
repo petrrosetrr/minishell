@@ -81,13 +81,13 @@ static int 	termcap_2(t_param *param, struct termios *term)
 		}
 		write(1, kek, 40);
 		tputs(save_cursor, 1, ft_putchar);
-//		overfree(param->com, param->com_tmp, NULL);
-		if (param->com)
-			free(param->com);
-		param->com = NULL;
-		if (param->com_tmp)
-			free(param->com_tmp);
-		param->com_tmp = NULL;
+		overfree(&param->com, &param->com_tmp, NULL);
+//		if (param->com)
+//			free(param->com);
+//		param->com = NULL;
+//		if (param->com_tmp)
+//			free(param->com_tmp);
+//		param->com_tmp = NULL;
 		i = 16;
 		while ((len = read(0, str, 9999)))
 			if ((n = key_func(str, param, len, &i)))

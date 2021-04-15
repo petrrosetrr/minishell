@@ -4,26 +4,26 @@
 
 #include "../includes/minishell.h"
 
-int add_array(char **array, int i)
+int	add_array(char ***array, int i)
 {
 	char **temp;
 	int k;
 
+//	write(1, "1\n", 2);
+//	printf("MyIQ:%d\n", i);
 	k = -1;
 	if (!array)
 		return (1);
-	temp = array;
-	array = (char**)malloc(sizeof(char*) * (i + 2));
+	temp = *array;
+	*array = (char**)malloc(sizeof(char*) * (i + 2));
 	while (temp[++k])
-	{
-		array[k] = temp[k];
-		free(temp[k]);
-	}
+		(*array)[k] = temp[k];
 	free(temp);
-	array[k++] = (char*)malloc(sizeof(char) * 2);
-	array[0][0] = '\0';
-	array[0][1] = '\0';
-	array[k] = NULL;
+	(*array)[k] = (char*)malloc(sizeof(char) * 2);
+	(*array)[k][0] = '\0';
+	(*array)[k][1] = '\0';
+	(*array)[++k] = NULL;
+//	write(1, "2\n", 2);
 	return (0);
 }
 
@@ -38,30 +38,27 @@ int add_first_array(t_pars_list *pars_list)
 	return (0);
 }
 
-int join_symbol(char *str, char symbol)
+int	join_symbol(char **str, char symbol)
 {
 	char *temp;
 	char *sym;
 
-	if (!str[0])
+	if ((*str)[0] == '\0')
 	{
-//		str = (char*)malloc(sizeof(char) * 2);
-		str[0] = symbol;
-//		str[1] = '\0';
+//		write(1, "9\n", 2);
+		*str = (char*)malloc(sizeof(char) * 2);
+		(*str)[0] = symbol;
+		(*str)[1] = '\0';
 	}
 	else
 	{
 		sym = (char*)malloc(sizeof(char) * 2);
 		sym[0] = symbol;
 		sym[1] = '\0';
-		temp = str;
-		printf("1:%s\n", str);
-		printf("sym1:%s\n", sym);
-		str = ft_strjoin(str, sym);
-		printf("2:%s\n", str);
-//		write(1, "1\n", 2);
+		temp = *str;
+		*str = ft_strjoin(*str, sym);
 		free(temp);
 		free(sym);
 	}
-	return (0);
+	return (1);
 }

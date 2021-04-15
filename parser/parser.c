@@ -9,12 +9,15 @@ static int pars_str(t_param *param, t_pars_list *pars_list, int *i, int *arg)
 	if (pars_list->args == NULL)
 		add_first_array(pars_list);
 	else if (pars_list->args[*arg] == NULL)
-		add_array(pars_list->args, *arg);
-	while (param->com[*i] && !ft_rhr(";'\"\\$|<>", param->com[*i]))
+		add_array(&pars_list->args, *arg);
+	while (param->com[*i] && !ft_rhr(";'\"\\$|<> ", param->com[*i]))
 	{
-		join_symbol(pars_list->args[*arg], param->com[*i]);
-		printf("args:%s\n", pars_list->args[*arg]);
-		printf("argD:%d\n", *arg);
+//		printf("arg:%d\n", *arg);
+//		write(1, "1\n", 2);
+//		printf("str:%c\n", pars_list->args[*arg][0]);
+//		write(1, "2\n", 2);
+		join_symbol(&(pars_list->args[*arg]), param->com[*i]);
+//		write(1, "4\n", 2);
 		(*i)++;
 	}
 	return (0);
