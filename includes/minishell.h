@@ -58,5 +58,8 @@ t_rdr		*init_rdr(void);
 int			add_first_array(t_pars_list *pars_list);
 int			add_array(char ***array, int i);
 int			join_symbol(char **str, char symbol);
+int			pars_backslash(t_param *param, t_pars_list *pars_list, int *i, int *arg);
+int			pars_quo_one(t_param *param, t_pars_list *pars_list, int *i, int *arg);
+int			pars_quo_two(t_param *param, t_pars_list *pars_list, int *i, int *arg);
 
 #endif

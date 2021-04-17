@@ -12,12 +12,7 @@ static int pars_str(t_param *param, t_pars_list *pars_list, int *i, int *arg)
 		add_array(&pars_list->args, *arg);
 	while (param->com[*i] && !ft_rhr(";'\"\\$|<> ", param->com[*i]))
 	{
-//		printf("arg:%d\n", *arg);
-//		write(1, "1\n", 2);
-//		printf("str:%c\n", pars_list->args[*arg][0]);
-//		write(1, "2\n", 2);
 		join_symbol(&(pars_list->args[*arg]), param->com[*i]);
-//		write(1, "4\n", 2);
 		(*i)++;
 	}
 	return (0);
@@ -30,11 +25,11 @@ static int parser_2(t_param *param, t_pars_list *pars_list, int *i, int *arg)
 		if (param->com[*i] == ';')
 			pars_str(param, pars_list, i, arg);
 		else if (param->com[*i] == '\'') // хард кавычка '
-			pars_str(param, pars_list, i, arg);
+			pars_quo_one(param, pars_list, i, arg);
 		else if (param->com[*i] == '"')
-			pars_str(param, pars_list, i, arg);
+			pars_quo_two(param, pars_list, i, arg);
 		else if (param->com[*i] == '\\')
-			pars_str(param, pars_list, i, arg);
+			pars_backslash(param, pars_list, i, arg);
 		else if (param->com[*i] == '$')
 			pars_str(param, pars_list, i, arg);
 		else if (param->com[*i] == '|')
