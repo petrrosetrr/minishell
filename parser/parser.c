@@ -32,8 +32,8 @@ static int parser_2(t_param *param, t_pars_list *pars_list, int *i, int *arg)
 			pars_backslash(param, pars_list, i, arg);
 		else if (param->com[*i] == '$')
 			pars_str(param, pars_list, i, arg);
-		else if (param->com[*i] == '|')
-			pars_str(param, pars_list, i, arg);
+		else if (param->com[*i] == '|') // доработать два пайпа подряд || после арг (сега)
+			pars_list = pars_pipe(param, pars_list, i, arg);
 		else if (param->com[*i] == '>')
 			pars_str(param, pars_list, i, arg);
 		else if (param->com[*i] == '<')
@@ -67,9 +67,14 @@ int parser(t_param *param)
 		else
 			parser_2(param, pars_list, &i, &arg);
 	}
-	i = -1;
-	while (pars_list->args[++i])
-		printf("%s\n", pars_list->args[i]);
+	while (pars_list)
+	{
+		i = -1;
+		while (pars_list->args[++i])
+			printf("%s\n", pars_list->args[i]);
+		write(1, "_pipe_\n", 7);
+		pars_list = pars_list->next_pipe;
+	}
 	//парсим одинарный или последний аргумент, если flag == 1;
 	return (0);
 }

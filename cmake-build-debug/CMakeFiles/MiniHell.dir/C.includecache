@@ -28,6 +28,14 @@ sys/ioctl.h
 signal.h
 -
 
+/Users/dpatrica/CLionProjects/MiniHell/libft/drop_space.c
+libft.h
+/Users/dpatrica/CLionProjects/MiniHell/libft/libft.h
+
+/Users/dpatrica/CLionProjects/MiniHell/libft/ft_putchar.c
+libft.h
+/Users/dpatrica/CLionProjects/MiniHell/libft/libft.h
+
 /Users/dpatrica/CLionProjects/MiniHell/libft/libft.h
 unistd.h
 -
@@ -42,7 +50,35 @@ ctype.h
 stddef.h
 -
 
+/Users/dpatrica/CLionProjects/MiniHell/libft/overfree.c
+libft.h
+/Users/dpatrica/CLionProjects/MiniHell/libft/libft.h
+
 /Users/dpatrica/CLionProjects/MiniHell/main.c
 ./includes/minishell.h
+/Users/dpatrica/CLionProjects/MiniHell/includes/minishell.h
+
+/Users/dpatrica/CLionProjects/MiniHell/other_fun.c
+includes/minishell.h
+/Users/dpatrica/CLionProjects/MiniHell/includes/minishell.h
+
+/Users/dpatrica/CLionProjects/MiniHell/parser/parser.c
+../includes/minishell.h
+/Users/dpatrica/CLionProjects/MiniHell/includes/minishell.h
+
+/Users/dpatrica/CLionProjects/MiniHell/parser/pre_parser.c
+../includes/minishell.h
+/Users/dpatrica/CLionProjects/MiniHell/includes/minishell.h
+
+/Users/dpatrica/CLionProjects/MiniHell/termcap/dop_func.c
+../includes/minishell.h
+/Users/dpatrica/CLionProjects/MiniHell/includes/minishell.h
+
+/Users/dpatrica/CLionProjects/MiniHell/termcap/key_function.c
+../includes/minishell.h
+/Users/dpatrica/CLionProjects/MiniHell/includes/minishell.h
+
+/Users/dpatrica/CLionProjects/MiniHell/termcap/termcap.c
+../includes/minishell.h
 /Users/dpatrica/CLionProjects/MiniHell/includes/minishell.h
 

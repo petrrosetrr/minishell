@@ -61,5 +61,6 @@ int			join_symbol(char **str, char symbol);
 int			pars_backslash(t_param *param, t_pars_list *pars_list, int *i, int *arg);
 int			pars_quo_one(t_param *param, t_pars_list *pars_list, int *i, int *arg);
 int			pars_quo_two(t_param *param, t_pars_list *pars_list, int *i, int *arg);
+t_pars_list	*pars_pipe(t_param *param, t_pars_list *pars_list, int *i, int *arg);
 
 #endif

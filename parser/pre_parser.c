@@ -16,6 +16,10 @@ int pre_parser(t_param *param)
 		error = "\033[01;34m\MiniHell: syntax error near unexpected token `;;'\n";
 	else if (*param->com == ';')
 		error = "\033[01;34m\MiniHell: syntax error near unexpected token `;'\n";
+	else if (*param->com == '|' && *(param->com + 1) == '|')
+		error = "\033[01;34m\MiniHell: syntax error near unexpected token `||'\n";
+	else if (*param->com == '|')
+		error = "\033[01;34m\MiniHell: syntax error near unexpected token `|'\n";
 	else if (*param->com == '.' && ++i)
 	{
 		param->com++;
