@@ -23,7 +23,7 @@ static int parser_2(t_param *param, t_pars_list *pars_list, int *i, int *arg)
 	while (param->com[*i])
 	{
 		if (param->com[*i] == ';')
-			pars_str(param, pars_list, i, arg);
+			pars_end_com(param, pars_list, i, arg);
 		else if (param->com[*i] == '\'') // хард кавычка '
 			pars_quo_one(param, pars_list, i, arg);
 		else if (param->com[*i] == '"')

@@ -59,9 +59,25 @@ t_pars_list *pars_pipe(t_param *param, t_pars_list *pars_list, int *i, int *arg)
 {
 	*arg = 0;
 	(*i)++;
+	if (param->com[*i] == '|')
+	{
+		while (param->com[*i] && param->com[*i] != ';')
+			(*i)++;
+		return (NULL);
+	}
 	while (param->com[*i] && param->com[*i] == ' ')
 		(*i)++;
 	if (param->com[*i])
 		return ((pars_list->next_pipe = init_pars_list()));
 	return (NULL);
+}
+
+int pars_end_com(t_param *param, t_pars_list *pars_list, int *i, int *arg)
+{
+	(*i)++;
+	if (param->com[*i] && param->com[*i] == ' ')
+		(*i)++;
+	if (param->com[*i])
+		return (0);
+	return (1);
 }
