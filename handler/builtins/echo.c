@@ -12,7 +12,7 @@
 
 #include "builtins.h"
 
-void echo_builtin(char **args)
+void	echo_builtin(char **args)
 {
 	int i;
 	int n_flag;

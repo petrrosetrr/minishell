@@ -10,105 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../builtins.h"
-
-
-t_keyval	**env_to_array(t_keyval *env_head)
-{
-	size_t		i;
-	t_keyval	**env;
-
-	i = 0;
-	env = ft_calloc(sizeof (t_keyval*), 1 + env_length(env_head));
-	while (env_head)
-	{
-		env[i++] = env_head;
-		env_head = env_head->next;
-	}
-	env[i] = NULL;
-	return (env);
-}
-
-size_t		env_length(t_keyval *env_head)
-{
-	size_t i;
-
-	i = 0;
-	while(env_head)
-	{
-		env_head = env_head->next;
-		i++;
-	}
-	return (i);
-}
-
-t_keyval	*env_lst_new(char *key, char *value)
-{
-	t_keyval *new;
-
-	if ((new = malloc(sizeof (t_keyval))) == NULL)
-		return (NULL);
-	new->key = key;
-	new->value = value;
-	new->next = NULL;
-	return (new);
-}
-
-t_keyval	*env_split(char *env_str)
-{
-	t_keyval *ret;
-
-	if (env_str != NULL)
-	{
-		ret = env_lst_new(NULL, NULL);
-		if (ft_strchr(env_str, '=') != NULL)
-		{
-			ret->key = ft_strndup(env_str, ft_strchr(env_str, '=') - env_str);
-			ret->value = ft_strdup(ft_strchr(env_str, '=') + 1);
-		}
-		else
-		{
-			ret->key = ft_strdup(env_str);
-			ret->value = NULL;
-		}
-		return (ret);
-	}
-	return (NULL);
-}
-
-t_keyval	*env_contains(t_keyval *env_head, char *key)
-{
-	while(env_head != NULL)
-	{
-		if (ft_strcmp(env_head->key, key) == 0)
-			return (env_head);
-		env_head = env_head->next;
-	}
-	return (NULL);
-}
-
-void		env_lst_addback(t_keyval **env_head, t_keyval *new)
-{
-	t_keyval *tmp;
-
-	tmp = *env_head;
-	if (env_head != NULL && *env_head != NULL && new != NULL)
-	{
-		new->next = NULL;
-		while (tmp->next)
-			tmp = tmp->next;
-		tmp->next = new;
-	}
-	else if (new != NULL)
-	{
-		*env_head = new;
-	}
-}
+#include "env.h"
 
 void		env_set(t_keyval **env_head, char *key, char *value, int plus)
 {
-	t_keyval *tmp;
-	char	 *new_value;
+	t_keyval	*tmp;
+	char		*new_value;
 
 	if ((tmp = env_contains(*env_head, key)) != NULL)
 	{
@@ -128,15 +35,6 @@ void		env_set(t_keyval **env_head, char *key, char *value, int plus)
 	}
 	else
 		env_lst_addback(env_head, env_lst_new(key, value));
-}
-
-void		env_free_one(t_keyval *env_item)
-{
-	if (env_item->key != NULL)
-		free(env_item->key);
-	if (env_item->value != NULL)
-		free(env_item->value);
-	free(env_item);
 }
 
 void		env_delete(t_keyval **env_head, char *key)
@@ -167,28 +65,9 @@ void		env_delete(t_keyval **env_head, char *key)
 	}
 }
 
-t_keyval	*env_to_list(char **env)
-{
-	t_keyval	*list_head;
-	int			i;
-
-	if (env != NULL)
-	{
-		i = 1;
-		list_head = env_split(env[0]);
-		while (env[i] != NULL)
-		{
-			env_lst_addback(&list_head, env_split(env[i]));
-			i++;
-		}
-		return (list_head);
-	}
-	return (NULL);
-}
-
 void		env_builtin(t_keyval *env_head)
 {
-	while(env_head != NULL)
+	while (env_head != NULL)
 	{
 		if (env_head->value != NULL)
 		{

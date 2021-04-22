@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../builtins.h"
+#include "env.h"
 
-int 		unset_print_error(char *key, int error_code)
+int			unset_print_error(char *key, int error_code)
 {
 	if (error_code == INVALID_ID)
 	{
@@ -29,11 +29,11 @@ int			unset_valid(char *key)
 	size_t i;
 
 	if (ft_strlen(key) == 0)
-		return unset_print_error(key, INVALID_ID);
+		return (unset_print_error(key, INVALID_ID));
 	if (!((key[0] >= 'a' && key[0] <= 'z')
-		  || (key[0] >= 'A' && key[0] <= 'Z')
-		  || (key[0] == '_')))
-		return unset_print_error(key, INVALID_ID);
+	|| (key[0] >= 'A' && key[0] <= 'Z')
+	|| (key[0] == '_')))
+		return (unset_print_error(key, INVALID_ID));
 	i = 1;
 	while (key[i] != '\0')
 	{
@@ -44,7 +44,7 @@ int			unset_valid(char *key)
 			i++;
 		else
 		{
-			return unset_print_error(key, INVALID_ID);
+			return (unset_print_error(key, INVALID_ID));
 		}
 	}
 	return (0);
@@ -57,9 +57,9 @@ void		unset_builtin(t_keyval **env_head, char **args)
 	if (args != NULL)
 	{
 		i = 0;
-		while(args[i])
+		while (args[i])
 		{
-			if(unset_valid(args[i]) == 0)
+			if (unset_valid(args[i]) == 0)
 			{
 				env_delete(env_head, args[i]);
 				errno = 0;

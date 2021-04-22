@@ -10,42 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../builtins.h"
-
-t_keyval	**export_sort(t_keyval *env_head)
-{
-	t_keyval	**env;
-	t_keyval	*tmp;
-	int			is_sorted;
-	size_t		i;
-
-	is_sorted = 0;
-	env = env_to_array(env_head);
-	while(!is_sorted)
-	{
-		i = 0;
-		is_sorted = 1;
-		while (i < env_length(env_head) - 1)
-		{
-			if(ft_strcmp(env[i]->key, env[i + 1]->key) > 0)
-			{
-				tmp = env[i];
-				env[i] = env[i + 1];
-				env[i + 1] = tmp;
-				is_sorted = 0;
-			}
-			i++;
-		}
-	}
-	return (env);
-}
+#include "env.h"
 
 void		export_print(t_keyval **env)
 {
 	size_t i;
 
 	i = 0;
-	while(env != NULL && env[i] != NULL)
+	while (env != NULL && env[i] != NULL)
 	{
 		ft_putstr_fd("declare -x ", OUT);
 		ft_putstr_fd(env[i]->key, OUT);
@@ -61,7 +33,7 @@ void		export_print(t_keyval **env)
 	free(env);
 }
 
-int 		export_print_error(char *key, int error_code)
+int			export_print_error(char *key, int error_code)
 {
 	if (error_code == INVALID_ID)
 	{
@@ -78,11 +50,11 @@ int			export_valid(char *key)
 	size_t i;
 
 	if (ft_strlen(key) == 0)
-		return export_print_error(key, INVALID_ID);
+		return (export_print_error(key, INVALID_ID));
 	if (!((key[0] >= 'a' && key[0] <= 'z')
 		|| (key[0] >= 'A' && key[0] <= 'Z')
 		|| (key[0] == '_')))
-		return export_print_error(key, INVALID_ID);
+		return (export_print_error(key, INVALID_ID));
 	i = 1;
 	while (key[i] != '\0')
 	{
@@ -96,7 +68,7 @@ int			export_valid(char *key)
 			if (i == ft_strlen(key) - 1 && key[i] == '+')
 				i++;
 			else
-				return export_print_error(key, INVALID_ID);
+				return (export_print_error(key, INVALID_ID));
 		}
 	}
 	return (0);
@@ -125,7 +97,7 @@ int			export_set(t_keyval **env_head, char *env_str)
 	return (ret);
 }
 
-void		export_builtin(t_keyval **env_head, char  **args)
+void		export_builtin(t_keyval **env_head, char **args)
 {
 	size_t i;
 
@@ -139,7 +111,7 @@ void		export_builtin(t_keyval **env_head, char  **args)
 		else if (ft_arrlen(args) > 0)
 		{
 			i = 0;
-			while(args[i] != NULL)
+			while (args[i] != NULL)
 			{
 				export_set(env_head, args[i]);
 				i++;

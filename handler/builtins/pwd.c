@@ -12,7 +12,7 @@
 
 #include "builtins.h"
 
-void pwd_builtin(void)
+void	pwd_builtin(void)
 {
 	char buf[PATH_MAX + 1];
 
@@ -21,4 +21,3 @@ void pwd_builtin(void)
 	ft_putstr_fd("\n", OUT);
 	errno = 0;
 }
-

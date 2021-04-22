@@ -12,7 +12,7 @@
 
 #include "builtins.h"
 
-void exit_builtin(char **args)
+void	exit_builtin(char **args)
 {
 	int exit_code;
 

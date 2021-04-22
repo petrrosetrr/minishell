@@ -12,10 +12,7 @@
 
 #include "builtins.h"
 
-// TODO: Обработка ошибок для $?
-// TODO: Пересмотреть видос
-
-void cd_errors(int error_code, char *path)
+void	cd_errors(int error_code, char *path)
 {
 	if (error_code == 1)
 	{
@@ -36,7 +33,7 @@ void cd_errors(int error_code, char *path)
 	errno = 1;
 }
 
-void cd_home(t_keyval **env_head)
+void	cd_home(t_keyval **env_head)
 {
 	char *home;
 	char buf[PATH_MAX + 1];
@@ -58,12 +55,12 @@ void cd_home(t_keyval **env_head)
 		cd_errors(1, NULL);
 }
 
-void cd_prev(t_keyval **env_head)
+void	cd_prev(t_keyval **env_head)
 {
 	char *prev;
 	char buf[PATH_MAX + 1];
 
-	if(env_contains(*env_head, "OLDPWD") != NULL &&
+	if (env_contains(*env_head, "OLDPWD") != NULL &&
 	(prev = env_contains(*env_head, "OLDPWD")->value) != NULL)
 	{
 		getcwd(buf, PATH_MAX + 1);
@@ -80,7 +77,7 @@ void cd_prev(t_keyval **env_head)
 		cd_errors(2, NULL);
 }
 
-void cd_path(t_keyval **env_head, char *path)
+void	cd_path(t_keyval **env_head, char *path)
 {
 	char buf[PATH_MAX + 1];
 
@@ -95,7 +92,7 @@ void cd_path(t_keyval **env_head, char *path)
 		cd_errors(-1, path);
 }
 
-void cd_builtin(t_keyval **env_head, char **args)
+void	cd_builtin(t_keyval **env_head, char **args)
 {
 	if (args != NULL)
 	{
