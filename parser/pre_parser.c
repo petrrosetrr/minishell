@@ -65,50 +65,48 @@ static int first_pre_pars(t_param *param, char **error)
 	return (0);
 }
 
-static int second_pars_end_sym(t_param *param, char **error)
+static int second_pars_end_sym(t_param *param, char **error, int i)
 {
-	int i;
-
-	i = 0;
-	while (!(*error) && param->com[i])
+	if (param->com[i] == ';' && param->com[i + 1] == ';')
+		*error = "\033[01;34m\MiniHell: syntax error near unexpected token `;;'\n";
+	else if (param->com[i] == ';')
 	{
+		i++;
+		while (param->com[i] == ' ')
+			i++;
 		if (param->com[i] == ';' && param->com[i + 1] == ';')
 			*error = "\033[01;34m\MiniHell: syntax error near unexpected token `;;'\n";
 		else if (param->com[i] == ';')
-		{
-			i++;
-			while (param->com[i] == ' ')
-				i++;
-			if (param->com[i] == ';' && param->com[i + 1] == ';')
-				*error = "\033[01;34m\MiniHell: syntax error near unexpected token `;;'\n";
-			else if (param->com[i] == ';')
-				*error = "\033[01;34m\MiniHell: syntax error near unexpected token `;'\n";
-		}
-		i++;
+			*error = "\033[01;34m\MiniHell: syntax error near unexpected token `;'\n";
 	}
 	return (0);
 }
 
-static int second_pars_pipe(t_param *param, char **error)
+static int second_pars_pipe(t_param *param, char **error, int i)
 {
-	int i;
+	int space;
 
-	i = 0;
-	while (!(*error) && param->com[i])
-	{
-		if (param->com[i] == ';' && param->com[i + 1] == ';')
-			*error = "\033[01;34m\MiniHell: syntax error near unexpected token `;;'\n";
-		else if (param->com[i] == ';')
-		{
-			while (param->com[i] == ' ')
-				i++;
-			if (param->com[i] == ';' && param->com[i + 1] == ';')
-				*error = "\033[01;34m\MiniHell: syntax error near unexpected token `;;'\n";
-			else if (param->com[i] == ';')
-				*error = "\033[01;34m\MiniHell: syntax error near unexpected token `;'\n";
-		}
+	i++;
+	space = 0;
+	while (param->com[i] == ' ' && ++space)
 		i++;
+	if (param->com[i] && space)
+	{
+		if (param->com[i] == '|' && param->com[i + 1] == '|')
+			*error = "\033[01;34m\MiniHell: syntax error near unexpected token `||'\n";
+		else if (param->com[i] == '|')
+			*error = "\033[01;34m\MiniHell: syntax error near unexpected token `|'\n";
 	}
+	return (0);
+}
+
+static int second_pars_rdr_out(t_param *param, char **error, int i)
+{
+	return (0);
+}
+
+static int second_pars_rdr_in(t_param *param, char **error, int i)
+{
 	return (0);
 }
 
@@ -117,28 +115,21 @@ int pre_parser(t_param *param)
 	int i;
 	char *error;
 
+	i = 0;
 	error = NULL;
-
-	while (param->com[*i])
-	{
-		if (param->com[*i] == ';')
-			;
-		else if (param->com[*i] == '|') // доработать два пайпа подряд || после арг (сега)
-			;
-		else if (param->com[*i] == '>')
-			;
-		else if (param->com[*i] == '<')
-			;
-		else if (param->com[*i] == ' ' && ++(*arg))
-			while (param->com[*i] == ' ')
-				(*i)++;
-		else
-			;
-	}
 	first_pre_pars(param, &error);
-	if (!error)
-		second_pars_end_sym(param, &error);
-	if (!error)
+	while (!error && param->com[i])
+	{
+		if (param->com[i] == ';')
+			second_pars_end_sym(param, &error, i);
+		else if (param->com[i] == '|') // доработать два пайпа подряд || после арг (сега)
+			second_pars_pipe(param, &error, i);
+		else if (param->com[i] == '>')
+			second_pars_rdr_out(param, &error, i);
+		else if (param->com[i] == '<')
+			second_pars_rdr_in(param, &error, i);
+		i++;
+	}
 	//FIXME отдельный парсер по элементам
 //	param->com -= (i = drop_space(&param->com));
 //	i = drop_space(&param->com);
