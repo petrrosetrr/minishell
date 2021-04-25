@@ -1,38 +1,71 @@
-#include "./includes/minishell.h"
-
-int main(int argc, char **argv, char **envp)
+#include "minishell.h"
+int main(int argc, char **argv, char **env)
 {
-	char			str[999];
-	int				len;
-	struct termios	term;
+	t_keyval *env_list;
+	(void) argc;
+	(void) argv;
 
-	tcgetattr(0, &term);
-	term.c_lflag &= ~(ECHO);
-	term.c_lflag &= ~(ICANON);
-	tcsetattr(0, TCSANOW, &term);
-//	term.c_cc[VMIN] = 200;
-	tgetent(0, "xterm-256color");
-	char *kek = key_down;
-	while ((len = read(0, str, 999)))
-	{
-		str[len] = '\0';
-//		len = read(0, str, 1000);
-//		printf("%d\n", len);
-//		printf("%s\n", str);
-//		if (len != 1)
-//			str[len] = '\0';
-//		write(1, str, len);
-		if (!(ft_strncmp(str, "\x1b[A", 7)))
-			write(1, "up\n", 3);
-		else if (!(ft_strncmp(str, "\x1b[B", 7)))
-			write(1, "down\n", 5);
-		else
-			write(1, str, len);
-//		if (!(ft_strncmp(str, "\n", 3)))
-//			write(1, str, len);
-//			write(1, str, len);
-//			break ;
-	}
-	write(1, "\n", 1);
-	return (0);
+	// handler init
+	env_list = handler_init(env);
+
+	t_pars_list *head = malloc(sizeof(t_pars_list));
+	head->args = ft_calloc(sizeof(char *), 3);
+	head->args[0] = ft_strdup("cd");
+	head->args[1] = ft_strdup("krkr");
+	head->fds_pipe = NULL;
+	head->fd_in = -1;
+	head->rdr_out = NULL;
+	head->rdr_in = NULL;
+////	head->rdr_in = malloc(sizeof (t_rdr));
+////	head->rdr_in->f_name = ft_strdup("ekkekekeke");
+////	head->rdr_in->type = R_APPEND;
+////	head->rdr_in->next = NULL;
+//	head->next_pipe = NULL;
+
+	head->next_pipe = malloc(sizeof(t_pars_list));
+	head->next_pipe->args = ft_calloc(sizeof (char*), 3);
+	head->next_pipe->args[0] = ft_strdup("cd");
+	head->next_pipe->args[1] = ft_strdup("~");
+	head->next_pipe->fd_in = -1;
+	head->next_pipe->rdr_in = NULL;
+	head->next_pipe->rdr_out = NULL;
+
+	head->next_pipe->next_pipe = malloc(sizeof(t_pars_list));
+	head->next_pipe->next_pipe->args = ft_calloc(sizeof (char*), 3);
+	head->next_pipe->next_pipe->args[0] = ft_strdup("cd");
+	head->next_pipe->next_pipe->args[1] = ft_strdup("-");
+	head->next_pipe->next_pipe->fd_in = -1;
+	head->next_pipe->next_pipe->rdr_in = NULL;
+	head->next_pipe->next_pipe->rdr_out = NULL;
+
+	head->next_pipe->next_pipe->next_pipe = malloc(sizeof(t_pars_list));
+	head->next_pipe->next_pipe->next_pipe->args = ft_calloc(sizeof (char*), 3);
+	head->next_pipe->next_pipe->next_pipe->args[0] = ft_strdup("pwd");
+//	head->next_pipe->next_pipe->next_pipe->args[1] = ft_strdup("~");
+	head->next_pipe->next_pipe->next_pipe->fd_in = -1;
+	head->next_pipe->next_pipe->next_pipe->rdr_in = NULL;
+	head->next_pipe->next_pipe->next_pipe->rdr_out = NULL;
+
+
+	handler(head, &env_list);
+
+	head->args = ft_calloc(sizeof(char *), 3);
+	head->args[0] = ft_strdup("echo");
+	head->args[1] = ft_strdup("kek");
+	head->fd_in = -1;
+	head->fds_pipe = NULL;
+	head->rdr_out = NULL;
+	head->rdr_in = NULL;
+	head->next_pipe = NULL;
+	handler(head, &env_list);
+
+//	head->next_pipe = NULL;
+//
+////	env_builtin(env_list);
+//	head->next_pipe = malloc(sizeof(t_pars_list));
+//	head->next_pipe->args = ft_calloc(sizeof (char*), 2);
+//	head->next_pipe->args[0] = ft_strdup("wc");
+//	head->next_pipe->fd_in = -1;
+//	head->next_pipe->rdr_in = NULL;
+//	head->next_pipe->rdr_out = NULL;
 }
