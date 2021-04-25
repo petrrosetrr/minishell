@@ -1,98 +1,72 @@
-#include "handler/handler.h"
 
+#include "minishell.h"
 int main(int argc, char **argv, char **env)
 {
-	// handler init
 	t_keyval *env_list;
+	(void) argc;
+	(void) argv;
 
+	// handler init
 	env_list = handler_init(env);
 
-	char *unset_args[2];
+	t_pars_list *head = malloc(sizeof(t_pars_list));
+	head->args = ft_calloc(sizeof(char *), 3);
+	head->args[0] = ft_strdup("cd");
+	head->args[1] = ft_strdup("krkr");
+	head->fds_pipe = NULL;
+	head->fd_in = -1;
+	head->rdr_out = NULL;
+	head->rdr_in = NULL;
+////	head->rdr_in = malloc(sizeof (t_rdr));
+////	head->rdr_in->f_name = ft_strdup("ekkekekeke");
+////	head->rdr_in->type = R_APPEND;
+////	head->rdr_in->next = NULL;
+//	head->next_pipe = NULL;
 
-	unset_args[0] = "PATH";
-	unset_args[1] = NULL;
-	(void) argc;
-	char  *arg[3];
+	head->next_pipe = malloc(sizeof(t_pars_list));
+	head->next_pipe->args = ft_calloc(sizeof (char*), 3);
+	head->next_pipe->args[0] = ft_strdup("cd");
+	head->next_pipe->args[1] = ft_strdup("~");
+	head->next_pipe->fd_in = -1;
+	head->next_pipe->rdr_in = NULL;
+	head->next_pipe->rdr_out = NULL;
 
-	unset_builtin(&env_list, unset_args);
-	arg[0] = ft_strdup("ls");
-	arg[1] = ft_strdup("-la");
-	arg[2] = NULL;
-	env_builtin(env_list);
-	exec(arg, env_list);
+	head->next_pipe->next_pipe = malloc(sizeof(t_pars_list));
+	head->next_pipe->next_pipe->args = ft_calloc(sizeof (char*), 3);
+	head->next_pipe->next_pipe->args[0] = ft_strdup("cd");
+	head->next_pipe->next_pipe->args[1] = ft_strdup("-");
+	head->next_pipe->next_pipe->fd_in = -1;
+	head->next_pipe->next_pipe->rdr_in = NULL;
+	head->next_pipe->next_pipe->rdr_out = NULL;
 
-//	char *args[2];
-//	args[0] = "K=EKELKRL";
-//	args[1] = NULL;
-//	unset_builtin(&shell_vars.env, &argv[1]);
-//	unset_builtin(&shell_vars.env, &args[0]);
-//	puts("<---------------------------------------------------->");
-//
-//	env_builtin(shell_vars.env);
-//	puts("<---------------------------------------------------->");
-//
-//	pwd_builtin();
-//	puts("<---------------------------------------------------->");
-//
-//	export_builtin(&shell_vars.env, NULL);
-//	puts("<---------------------------------------------------->");
-//
-//	export_builtin(&shell_vars.env, &argv[1]);
-//	puts("<---------------------------------------------------->");
-//
-//	export_builtin(&shell_vars.env, NULL);
-//	puts("<---------------------------------------------------->");
-//
-//	env_builtin(shell_vars.env);
-//	puts("<---------------------------------------------------->");
-//
-//	unset_builtin(&shell_vars.env, &argv[1]);
-//	puts("<---------------------------------------------------->");
-//
-//	export_builtin(&shell_vars.env, NULL);
-//	puts("<---------------------------------------------------->");
-//	export_builtin(&shell_vars.env, &argv[1]);
-//	export_builtin(&shell_vars.env, NULL);
-//	puts("<---------------------------------------------------->");
-//	unset_builtin(&shell_vars.env, &argv[1]);
-//	export_builtin(&shell_vars.env, NULL);
-
-//	char *args[2];
-//	args[0] = "../";
-//	args[1] = NULL;
-//	cd_builtin(&shell_vars.env, args);
-//	pwd_builtin();
-//
-//	args[0] = "-";
-//	cd_builtin(&shell_vars.env, args);
-//	pwd_builtin();
-//
-//	args[0] = "/";
-//	cd_builtin(&shell_vars.env, args);
-//	pwd_builtin();
-//
-//	args[0] = "~";
-//	cd_builtin(&shell_vars.env, args);
-//	pwd_builtin();
-//	env_builtin(shell_vars.env);
+	head->next_pipe->next_pipe->next_pipe = malloc(sizeof(t_pars_list));
+	head->next_pipe->next_pipe->next_pipe->args = ft_calloc(sizeof (char*), 3);
+	head->next_pipe->next_pipe->next_pipe->args[0] = ft_strdup("pwd");
+//	head->next_pipe->next_pipe->next_pipe->args[1] = ft_strdup("~");
+	head->next_pipe->next_pipe->next_pipe->fd_in = -1;
+	head->next_pipe->next_pipe->next_pipe->rdr_in = NULL;
+	head->next_pipe->next_pipe->next_pipe->rdr_out = NULL;
 
 
-//	env_builtin(shell_vars.env);
-	//	puts("<---------------------------------------------------->");
-//	while (*env != NULL)
-//	{
-//		printf("%s\n", *env++);
-//	}
-//	printf("%s", strerror(errno));
+	handler(head, &env_list);
 
-//	t_keyval *tmp = shell_vars.env;
-//	t_keyval *tmp_next;
+	head->args = ft_calloc(sizeof(char *), 3);
+	head->args[0] = ft_strdup("echo");
+	head->args[1] = ft_strdup("kek");
+	head->fd_in = -1;
+	head->fds_pipe = NULL;
+	head->rdr_out = NULL;
+	head->rdr_in = NULL;
+	head->next_pipe = NULL;
+	handler(head, &env_list);
+
+//	head->next_pipe = NULL;
 //
-//	while (tmp != NULL)
-//	{
-//		tmp_next = tmp->next;
-//		env_free_one(tmp);
-//		tmp = tmp_next;
-//	}
-	return (0);
+////	env_builtin(env_list);
+//	head->next_pipe = malloc(sizeof(t_pars_list));
+//	head->next_pipe->args = ft_calloc(sizeof (char*), 2);
+//	head->next_pipe->args[0] = ft_strdup("wc");
+//	head->next_pipe->fd_in = -1;
+//	head->next_pipe->rdr_in = NULL;
+//	head->next_pipe->rdr_out = NULL;
 }

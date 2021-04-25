@@ -1,19 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jalease <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/15 00:06:01 by jalease           #+#    #+#             */
+/*   Updated: 2021/04/15 00:06:03 by jalease          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MINISHELL_H
-#define MINISHELL_H
+# define MINISHELL_H
 
-typedef struct	s_rdr
-{
-	int				type;
-	char			*f_name;
-	struct s_rdr	*next;
-}					t_rdr;
-
-typedef struct	s_pars_list
-{
-	char				**args;
-	t_rdr				*next_rdr_out;
-	t_rdr				*next_rdr_in;
-	struct s_pars_list	*next_pipe;
-}				t_pars_list;
+# include "handler/handler.h"
+# include "libft/libft.h"
 
 #endif

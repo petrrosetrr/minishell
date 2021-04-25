@@ -11,11 +11,16 @@
 /* ************************************************************************** */
 
 #ifndef HANDLER_H
-#define HANDLER_H
+# define HANDLER_H
+# include <fcntl.h>
 # include "builtins/builtins.h"
 # include "exec/exec.h"
 # include "utils/utils.h"
+# include "../minishell.h"
+# define ENOCOMMAND 404
+# include "../defines.h"
 
-t_keyval *handler_init(char **env);
+t_keyval	*handler_init(char **env);
+void		handler(t_pars_list *command_list, t_keyval **env);
 
 #endif

@@ -11,15 +11,18 @@
 /* ************************************************************************** */
 
 #ifndef EXEC_H
-#define EXEC_H
-# include "../builtins/builtins.h"
+# define EXEC_H
 # include <dirent.h>
-# include "../utils/utils.h"
-# define NO_PATH 123
-# define NO_EXECUTABLE 512
-# define IS_A_DIR 3328
+# include "../handler.h"
+# include "../../defines.h"
 
-typedef struct dirent	s_dir;
-int						exec(char **args, t_keyval *env_head);
-
+typedef struct dirent	t_dir;
+void					exec_errors(int ecode, char *path);
+char					*exec_strjoin(char *s1, char *s2, char *s3);
+char					*exec_check_path(char **dir, char *command);
+char					**exec_split_path(t_keyval *env_head);
+char					**exec_join_env(t_keyval *env_head);
+void					exec_fork(char *path, char **args, char **env,
+						int *fds);
+void					exec(t_pars_list *command, t_keyval *env, int *fds);
 #endif
