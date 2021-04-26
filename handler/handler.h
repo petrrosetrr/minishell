@@ -16,7 +16,7 @@
 # include "builtins/builtins.h"
 # include "exec/exec.h"
 # include "utils/utils.h"
-# include "../minishell.h"
+# include "../includes/minishell.h"
 # define ENOCOMMAND 404
 # include "../defines.h"
 

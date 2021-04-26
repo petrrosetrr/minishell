@@ -1,19 +1,3 @@
-<<<<<<< HEAD
-#include "minishell.h"
-int main(int argc, char **argv, char **env)
-{
-	t_keyval *env_list;
-	(void) argc;
-	(void) argv;
-
-	// handler init
-//	env_list = handler_init(env);
-
-
-
-	handler(head, &env_list);
-
-=======
 #include "./includes/minishell.h"
 
 static void	init(t_param *param)
@@ -24,9 +8,14 @@ static void	init(t_param *param)
 	param->last = 0;
 }
 
-int			main(int argc, char **argv, char **envp)
+int			main(int argc, char **argv, char **env)
 {
 	t_param param;
+	t_keyval *env_list;
+
+	// handler init
+//	env_list = handler_init(env);
+//	handler(head, &env_list);
 
 	param.com = NULL;
 	init(&param);
@@ -85,5 +74,4 @@ int			main(int argc, char **argv, char **envp)
 		}
 	}*/
 	return (0);
->>>>>>> dpatrica
 }

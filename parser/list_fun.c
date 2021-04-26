@@ -10,9 +10,11 @@ t_pars_list *init_pars_list(void)
 
 	pars_list = (t_pars_list*)malloc(sizeof(t_pars_list));
 	pars_list->args = NULL;
-	pars_list->next_rdr_out = NULL;
-	pars_list->next_rdr_in = NULL;
+	pars_list->rdr_out = NULL;
+	pars_list->rdr_in = NULL;
 	pars_list->next_pipe = NULL;
+	pars_list->fds_pipe = NULL;
+	pars_list->fd_in = -1;
 	return (pars_list);
 }
 

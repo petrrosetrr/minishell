@@ -38,8 +38,8 @@ typedef struct			s_pars_list
 	t_rdr				*rdr_out;
 	t_rdr				*rdr_in;
 	struct s_pars_list	*next_pipe;
-	int 				*fds_pipe;
-	int					fd_in;
+	int 				*fds_pipe; // NULL;
+	int					fd_in; // -1;
 }						t_pars_list;
 
 #endif
