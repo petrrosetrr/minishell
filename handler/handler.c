@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "handler.h"
+#include "../includes/minishell.h"
 
 t_keyval	*handler_init(char **env)
 {

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
+#include "../../../includes/minishell.h"
 
 void		export_print(t_keyval **env)
 {

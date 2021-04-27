@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "env.h"
+#include "../../../includes/minishell.h"
 
 void		env_free_one(t_keyval *env_item)
 {

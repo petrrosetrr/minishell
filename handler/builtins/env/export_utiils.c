@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
+#include "../../../includes/minishell.h"
 
 t_keyval	**export_sort(t_keyval *env_head)
 {

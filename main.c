@@ -11,7 +11,7 @@ static void	init(t_param *param)
 int			main(int argc, char **argv, char **env)
 {
 	t_param param;
-	t_keyval *env_list;
+//	t_keyval *env_list;
 
 	// handler init
 //	env_list = handler_init(env);

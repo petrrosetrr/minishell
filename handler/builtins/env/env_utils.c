@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
+#include "../../../includes/minishell.h"
 
 void		env_inc_sh(t_keyval **env_head)
 {

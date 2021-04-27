@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "env.h"
+#include "../../../includes/minishell.h"
 
 void		env_set(t_keyval **env_head, char *key, char *value, int plus)
 {

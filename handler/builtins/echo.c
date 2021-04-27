@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "builtins.h"
+#include "../../includes/minishell.h"
 
 void	echo_builtin(char **args)
 {
