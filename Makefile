@@ -103,7 +103,7 @@ all:		$(NAME)
 
 $(NAME):    $(OBJS)
 			make -C ./libft
-			$(GCC) $(OBJS) $(LIBA) -o $(NAME)
+			$(GCC) $(OBJS) $(LIBA) -o $(NAME) -ltermcap
 
 clean:
 			$(RM) $(OBJS)
