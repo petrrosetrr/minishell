@@ -67,14 +67,15 @@ int parser(t_param *param)
 		else
 			parser_2(param, pars_list, &i, &arg);
 	}
-	while (pars_list)
-	{
-		i = -1;
-		while (pars_list->args[++i])
-			printf("%s\n", pars_list->args[i]);
-		write(1, "_pipe_\n", 7);
-		pars_list = pars_list->next_pipe;
-	}
+	handler(pars_list, &param->env_list);
+//	while (pars_list)
+//	{
+//		i = -1;
+//		while (pars_list->args[++i])
+//			printf("%s\n", pars_list->args[i]);
+//		write(1, "_pipe_\n", 7);
+//		pars_list = pars_list->next_pipe;
+//	}
 	//парсим одинарный или последний аргумент, если flag == 1;
 	return (0);
 }

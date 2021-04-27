@@ -39,21 +39,22 @@
 # include <limits.h>
 # include <errno.h>
 
-typedef struct			s_param
-{
-	char	*com;
-	char 	*com_tmp;
-	char	**all_com;
-	int 	cur;
-	int		last;
-}						t_param;
-
 typedef struct			s_keyval
 {
 	char				*key;
 	char				*value;
 	struct s_keyval		*next;
 }						t_keyval;
+
+typedef struct			s_param
+{
+	char		*com;
+	char 		*com_tmp;
+	char		**all_com;
+	int 		cur;
+	int			last;
+	t_keyval	*env_list
+}						t_param;
 
 typedef struct			s_rdr
 {

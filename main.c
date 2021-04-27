@@ -1,24 +1,20 @@
 #include "./includes/minishell.h"
 
-static void	init(t_param *param)
+static void	init(t_param *param, char **env)
 {
 	param->all_com = NULL;
 	param->com_tmp = NULL;
 	param->cur = 0;
 	param->last = 0;
+	param->env_list = handler_init(env);
 }
 
 int			main(int argc, char **argv, char **env)
 {
 	t_param param;
-//	t_keyval *env_list;
-
-	// handler init
-//	env_list = handler_init(env);
-//	handler(head, &env_list);
 
 	param.com = NULL;
-	init(&param);
+	init(&param, env);
 	termcap(&param);
 /*	char			str[9999];
 	int				len;
