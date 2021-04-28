@@ -53,7 +53,7 @@ typedef struct			s_param
 	char		**all_com;
 	int 		cur;
 	int			last;
-	t_keyval	*env_list
+	t_keyval	*env_list;
 }						t_param;
 
 typedef struct			s_rdr

@@ -82,7 +82,7 @@ LIBA	=	./libft/libft.a
 OBJS	=	$(SRCS:.c=.o)
 #LIBOBJS	=	$(LIBSRCS:.c=.o)
 
-GCC		= 	gcc
+GCC		= 	gcc -g
 FLAG	=	-Wall -Wextra -Werror
 RM		=	rm -f
 C		=	-c
