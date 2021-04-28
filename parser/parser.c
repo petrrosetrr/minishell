@@ -23,7 +23,7 @@ static int parser_2(t_param *param, t_pars_list *pars_list, int *i, int *arg)
 	while (param->com[*i])
 	{
 		if (param->com[*i] == ';')
-			pars_end_com(param, pars_list, i, arg);
+			pars_end_com(param, &pars_list, i, arg);
 		else if (param->com[*i] == '\'') // хард кавычка '
 			pars_quo_one(param, pars_list, i, arg);
 		else if (param->com[*i] == '"')
@@ -52,12 +52,11 @@ int parser(t_param *param)
 	int i;
 	int arg;
 	t_pars_list *pars_list;
-	t_pars_list *temp_pars_list;
 
-	pars_list = init_pars_list();
-	temp_pars_list = pars_list;
 	if (pre_parser(param))
 		return (1);
+	pars_list = init_pars_list();
+	param->tmp_list = pars_list;
 	arg = 0;
 	i = 0;
 	while (param->com[i])
@@ -67,7 +66,8 @@ int parser(t_param *param)
 		else
 			parser_2(param, pars_list, &i, &arg);
 	}
-	handler(pars_list, &param->env_list);
+	handler(param->tmp_list, &param->env_list);
+	free_pars_list(&param->tmp_list);
 //	while (pars_list)
 //	{
 //		i = -1;

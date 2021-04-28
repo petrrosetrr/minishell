@@ -115,5 +115,6 @@ int			termcap(t_param *param)
 //	tcsetattr(0, TCSANOW, &term);
 	term_on_off(&term, 0);
 	freesher(param);
+	exit_builtin(NULL);
 	return (0);
 }

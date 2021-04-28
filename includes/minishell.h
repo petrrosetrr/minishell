@@ -46,16 +46,6 @@ typedef struct			s_keyval
 	struct s_keyval		*next;
 }						t_keyval;
 
-typedef struct			s_param
-{
-	char		*com;
-	char 		*com_tmp;
-	char		**all_com;
-	int 		cur;
-	int			last;
-	t_keyval	*env_list;
-}						t_param;
-
 typedef struct			s_rdr
 {
 	int					type;
@@ -72,6 +62,17 @@ typedef struct			s_pars_list
 	int 				*fds_pipe; // NULL;
 	int					fd_in; // -1;
 }						t_pars_list;
+
+typedef struct			s_param
+{
+	char		*com;
+	char 		*com_tmp;
+	char		**all_com;
+	int 		cur;
+	int			last;
+	t_pars_list	*tmp_list;
+	t_keyval	*env_list;
+}						t_param;
 
 typedef struct dirent	t_dir;
 
@@ -104,7 +105,8 @@ int			pars_backslash(t_param *param, t_pars_list *pars_list, int *i, int *arg);
 int			pars_quo_one(t_param *param, t_pars_list *pars_list, int *i, int *arg);
 int			pars_quo_two(t_param *param, t_pars_list *pars_list, int *i, int *arg);
 t_pars_list	*pars_pipe(t_param *param, t_pars_list *pars_list, int *i, int *arg);
-int			pars_end_com(t_param *param, t_pars_list *pars_list, int *i, int *arg);
+int			pars_end_com(t_param *param, t_pars_list **pars_list, int *i, int *arg);
+void		free_pars_list(t_pars_list **pars_list);
 
 t_keyval	*handler_init(char **env);
 void		handler(t_pars_list *command_list, t_keyval **env);
