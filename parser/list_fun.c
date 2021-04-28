@@ -39,3 +39,36 @@ t_pars_list next_pars_list(t_pars_list *pars_list, int spec)
 //	else if (spec == PIPE)
 	return (temp);
 }
+
+void free_pars_list(t_pars_list **pars_list)
+{
+	int i;
+
+	while (*pars_list)
+	{
+		i = 0;
+		if ((*pars_list)->args)
+		{
+			while ((*pars_list)->args[i])
+				free((*pars_list)->args[i++]);
+			free((*pars_list)->args);
+			(*pars_list)->args = NULL;
+		}
+		while ((*pars_list)->rdr_out)
+		{
+			if ((*pars_list)->rdr_out->f_name)
+				free((*pars_list)->rdr_out->f_name);
+			(*pars_list)->rdr_out->f_name = NULL;
+			(*pars_list)->rdr_out = (*pars_list)->rdr_out->next;
+		}
+		while ((*pars_list)->rdr_in)
+		{
+			if ((*pars_list)->rdr_in->f_name)
+				free((*pars_list)->rdr_in->f_name);
+			(*pars_list)->rdr_in->f_name = NULL;
+			(*pars_list)->rdr_in = (*pars_list)->rdr_in->next;
+		}
+		free(*pars_list);
+		*pars_list = (*pars_list)->next_pipe;
+	}
+}

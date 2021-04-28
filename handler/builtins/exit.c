@@ -17,7 +17,7 @@ void	exit_builtin(char **args)
 	int exit_code;
 
 	exit_code = 0;
-	write(1, "exit\n", 1);
+	write(1, "exit\n", 5);
 	if (ft_arrlen(args) > 0)
 	{
 		if (isdigitstr(args[0]))

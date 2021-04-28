@@ -234,7 +234,7 @@ void		handler(t_pars_list *command_list, t_keyval **env)
 				close(list->fds_pipe[1]);
 				dup2(list->fds_pipe[0], IN);
 			}
-			if(command_list->next_pipe == NULL)
+			if(list->next_pipe == NULL)
 			{
 				dup2(fd_0, 0);
 			}
