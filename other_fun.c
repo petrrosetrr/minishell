@@ -1,10 +1,18 @@
-//
-// Created by Daisey Patrica on 4/12/21.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   other_fun.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jalease <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/29 10:00:24 by jalease           #+#    #+#             */
+/*   Updated: 2021/04/29 10:00:26 by jalease          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "includes/minishell.h"
 
-void freesher(t_param *param)
+void	freesher(t_param *param)
 {
 	int i;
 

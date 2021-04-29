@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int overfree(char **str1, char **str2, char **str3)
+int	overfree(char **str1, char **str2, char **str3)
 {
 	int i;
 
