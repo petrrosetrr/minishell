@@ -101,12 +101,13 @@ t_rdr		*init_rdr(void);
 int			add_first_array(t_pars_list *pars_list);
 int			add_array(char ***array, int i);
 int			join_symbol(char **str, char symbol);
-int			pars_backslash(t_param *param, t_pars_list *pars_list, int *i, int *arg);
-int			pars_quo_one(t_param *param, t_pars_list *pars_list, int *i, int *arg);
-int			pars_quo_two(t_param *param, t_pars_list *pars_list, int *i, int *arg);
+int			pars_backslash(t_param *param, char **str, int *i);
+int			pars_quo_one(t_param *param, char **str, int *i);
+int			pars_quo_two(t_param *param, char **str, int *i);
 t_pars_list	*pars_pipe(t_param *param, t_pars_list *pars_list, int *i, int *arg);
 int			pars_end_com(t_param *param, t_pars_list **pars_list, int *i, int *arg);
 void		free_pars_list(t_pars_list **pars_list);
+int			pars_rdr(t_param *param, t_pars_list *pars_list, int *i, int *arg);
 
 t_keyval	*handler_init(char **env);
 void		handler(t_pars_list *command_list, t_keyval **env);

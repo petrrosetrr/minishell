@@ -23,7 +23,7 @@ t_rdr *init_rdr(void)
 	t_rdr  *rdr;
 
 	rdr = (t_rdr*)malloc(sizeof(t_rdr));
-	rdr->type = 0;
+	rdr->type = R_REWRITE;
 	rdr->f_name = NULL;
 	rdr->next = NULL;
 	return (rdr);
