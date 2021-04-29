@@ -61,6 +61,8 @@ static int first_pre_pars(t_param *param, char **error)
 		if (!*param->com)
 			*error = "\033[01;34m\MiniHell: .: filename argument required\n.: usage: . filename [arguments]\n";
 	}
+//	if (!*param->com && !*error)
+//		return (1);
 	param->com -= i;
 	return (0);
 }

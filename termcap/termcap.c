@@ -4,11 +4,16 @@
 
 #include "../includes/minishell.h"
 
-static void	pre_pars(t_param *param)
+static int pre_pars(t_param *param)
 {
 	int i;
 	char **temp;
 
+	i = 0;
+	while (param->com[i] == ' ')
+		i++;
+	if (!param->com[i])
+		return (1);
 	i = -1;
 	if (!param->last)
 	{
@@ -32,6 +37,7 @@ static void	pre_pars(t_param *param)
 		param->cur = param->last;
 		free(temp);
 	}
+	return (0);
 }
 
 static void	term_on_off(struct termios *term, int flag)
@@ -72,8 +78,9 @@ static int 	termcap_2(t_param *param, struct termios *term)
 		{
 //			write(1, "1\n", 2);
 			term_on_off(term, 0);
-			pre_pars(param);
-			if (parser(param))
+//			if (pre_pars(param))
+//				;
+			if (!pre_pars(param) && parser(param))
 				n = 0; // n = 0 и term_on_off
 			term_on_off(term, 1);
 			if (!n)

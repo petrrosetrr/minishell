@@ -144,7 +144,7 @@ int			key_func(char *str, t_param *param, int len, int *i)
 	str[len] = '\0';
 	if (!ft_strncmp(str, "\n", 2) && write(1, "\n", 1))
 		return (1);
-	else if (!ft_strncmp(str, "\4", 1))
+	else if (!ft_strncmp(str, "\4", 1) && write(1, "\n", 1))
 		return (EXIT);
 	else if (!ft_strncmp(str, "\3", 1) && write(1, "\n", 1))
 		return (CTRL_C);
