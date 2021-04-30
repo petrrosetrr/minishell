@@ -39,6 +39,7 @@
 # include <limits.h>
 # include <errno.h>
 
+int 					g_status;
 typedef struct			s_keyval
 {
 	char				*key;

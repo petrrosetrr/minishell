@@ -27,8 +27,8 @@ char		*env_get(t_keyval *env_head, char *key)
 {
 	t_keyval *tmp;
 
-	if ((tmp = env_contains(env_head, key)) != NULL)
-		return (tmp->value);
+	if ((tmp = env_contains(env_head, key)) != NULL && tmp->value != NULL)
+		return (ft_strdup(tmp->value));
 	else
 		return (ft_strdup(""));
 }

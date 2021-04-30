@@ -12,6 +12,13 @@
 
 #include "../includes/minishell.h"
 
+void	sig_handler(int signal)
+{
+	if (signal == 3)
+		ft_putstr_fd("Quit: 3", OUT);
+	write(1, "\n", 1);
+}
+
 t_keyval	*handler_init(char **env)
 {
 	t_keyval	*env_list;
@@ -24,6 +31,9 @@ t_keyval	*handler_init(char **env)
 	unset_builtin(&env_list, args);
 	free_2d(args);
 	env_inc_sh(&env_list);
+	signal(SIGINT, sig_handler);
+	signal(SIGQUIT, sig_handler);
+	g_status = 0;
 	return (env_list);
 }
 
