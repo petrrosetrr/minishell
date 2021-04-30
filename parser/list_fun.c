@@ -59,6 +59,7 @@ void free_pars_list(t_pars_list **pars_list)
 			if ((*pars_list)->rdr_out->f_name)
 				free((*pars_list)->rdr_out->f_name);
 			(*pars_list)->rdr_out->f_name = NULL;
+			free((*pars_list)->rdr_out);
 			(*pars_list)->rdr_out = (*pars_list)->rdr_out->next;
 		}
 		while ((*pars_list)->rdr_in)
@@ -66,6 +67,7 @@ void free_pars_list(t_pars_list **pars_list)
 			if ((*pars_list)->rdr_in->f_name)
 				free((*pars_list)->rdr_in->f_name);
 			(*pars_list)->rdr_in->f_name = NULL;
+			free((*pars_list)->rdr_in);
 			(*pars_list)->rdr_in = (*pars_list)->rdr_in->next;
 		}
 		free(*pars_list);
