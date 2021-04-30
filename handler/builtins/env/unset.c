@@ -19,7 +19,7 @@ int			unset_print_error(char *key, int error_code)
 		ft_putstr_fd("minishell: unset: `", ERR);
 		ft_putstr_fd(key, ERR);
 		ft_putstr_fd("': not a valid identifier\n", ERR);
-		errno = INVALID_ID;
+		g_status = INVALID_ID;
 	}
 	return (error_code);
 }
@@ -62,7 +62,7 @@ void		unset_builtin(t_keyval **env_head, char **args)
 			if (unset_valid(args[i]) == 0)
 			{
 				env_delete(env_head, args[i]);
-				errno = 0;
+				g_status = 0;
 			}
 			i++;
 		}

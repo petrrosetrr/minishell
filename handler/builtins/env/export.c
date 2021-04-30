@@ -40,7 +40,7 @@ int			export_print_error(char *key, int error_code)
 		ft_putstr_fd("minishell: export: `", ERR);
 		ft_putstr_fd(key, ERR);
 		ft_putstr_fd("': not a valid identifier\n", ERR);
-		errno = INVALID_ID;
+		g_status = INVALID_ID;
 	}
 	return (error_code);
 }
@@ -91,7 +91,7 @@ int			export_set(t_keyval **env_head, char *env_str)
 		{
 			env_set(env_head, ft_strdup(tmp->key), ft_strdup(tmp->value), 0);
 		}
-		errno = 0;
+		g_status = 0;
 	}
 	env_free_one(tmp);
 	return (ret);
@@ -106,7 +106,7 @@ void		export_builtin(t_keyval **env_head, char **args)
 		if (*env_head != NULL && ft_arrlen(args) == 0)
 		{
 			export_print(export_sort(*env_head));
-			errno = 0;
+			g_status = 0;
 		}
 		else if (ft_arrlen(args) > 0)
 		{

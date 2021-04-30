@@ -30,7 +30,7 @@ void	cd_errors(int error_code, char *path)
 		ft_putstr_fd(strerror(errno), ERR);
 		ft_putstr_fd("\n", ERR);
 	}
-	errno = 1;
+	g_status = 1;
 }
 
 void	cd_home(t_keyval **env_head)
@@ -46,7 +46,7 @@ void	cd_home(t_keyval **env_head)
 		{
 			env_set(env_head, ft_strdup("OLDPWD"), ft_strdup(buf), 0);
 			env_set(env_head, ft_strdup("PWD"), ft_strdup(home), 0);
-			errno = 0;
+			g_status = 0;
 		}
 		else
 			cd_errors(-1, home);
@@ -68,7 +68,7 @@ void	cd_prev(t_keyval **env_head)
 		{
 			env_set(env_head, ft_strdup("OLDPWD"), ft_strdup(buf), 0);
 			env_set(env_head, ft_strdup("PWD"), ft_strdup(prev), 0);
-			errno = 0;
+			g_status = 0;
 		}
 		else
 			cd_errors(-1, prev);
@@ -86,7 +86,7 @@ void	cd_path(t_keyval **env_head, char *path)
 	{
 		env_set(env_head, ft_strdup("OLDPWD"), ft_strdup(buf), 0);
 		env_set(env_head, ft_strdup("PWD"), ft_strdup(path), 0);
-		errno = 0;
+		g_status = 0;
 	}
 	else
 		cd_errors(-1, path);

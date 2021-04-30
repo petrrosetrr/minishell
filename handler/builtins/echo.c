@@ -33,5 +33,5 @@ void	echo_builtin(char **args)
 	}
 	if (n_flag)
 		ft_putstr_fd("\n", OUT);
-	errno = 0;
+	g_status = 0;
 }

@@ -19,5 +19,5 @@ void	pwd_builtin(void)
 	getcwd(buf, PATH_MAX + 1);
 	ft_putstr_fd(buf, OUT);
 	ft_putstr_fd("\n", OUT);
-	errno = 0;
+	g_status = 0;
 }

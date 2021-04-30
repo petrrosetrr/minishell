@@ -104,7 +104,7 @@ void		wait_n_close(t_pars_list *command_list)
 	while (i < c_list_len(command_list))
 	{
 		wait(&ret);
-		errno = ret;
+		g_status = ret;
 		ret = 0;
 		i++;
 	}
@@ -132,7 +132,7 @@ int			redir_errors(int ecode, char *path)
 {
 	if (ecode > 0)
 	{
-		errno = ecode;
+		g_status = ecode;
 		ft_putstr_fd("minishell: ", ERR);
 		ft_putstr_fd(path, ERR);
 		ft_putstr_fd(": ", ERR);
