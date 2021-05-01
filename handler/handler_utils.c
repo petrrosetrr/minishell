@@ -54,7 +54,7 @@ void		wait_n_close(t_pars_list *command_list)
 	while (i < c_list_len(command_list))
 	{
 		wait(&ret);
-		g_status = ret;
+		g_status = ret / 256;
 		ret = 0;
 		i++;
 	}

@@ -114,7 +114,7 @@ void	exec(t_pars_list *command, t_keyval *env, int *fds)
 				free(path);
 			}
 			else
-				exec_errors(ENOENT, command->args[0]);
+				exec_errors(ENOCOMMAND, command->args[0]);
 			free_2d(path_arr);
 		}
 		else

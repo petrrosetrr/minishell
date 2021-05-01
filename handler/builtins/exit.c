@@ -26,12 +26,12 @@ void	exit_builtin(char **args)
 		{
 			ft_putstr_fd("minishell: exit: ", ERR);
 			ft_putstr_fd(args[0], ERR);
-			ft_putstr_fd(": numeric argument required", ERR);
+			ft_putstr_fd(": numeric argument required\n", ERR);
 			exit(exit_code);
 		}
 		if (ft_arrlen(args) > 1)
 		{
-			ft_putstr_fd("minishell: exit: too many arguments", ERR);
+			ft_putstr_fd("minishell: exit: too many arguments\n", ERR);
 		}
 	}
 	exit(exit_code);

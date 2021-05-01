@@ -21,7 +21,7 @@ void		env_set(t_keyval **env_head, char *key, char *value, int plus)
 	{
 		if (value != NULL)
 		{
-			if (plus)
+			if (plus && tmp->value != NULL)
 			{
 				new_value = ft_strjoin(tmp->value, value);
 				free(value);
