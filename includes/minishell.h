@@ -109,6 +109,14 @@ int						pars_env(t_param *param, char **str, int *i);
 t_keyval				*handler_init(char **env);
 void					handler(t_pars_list *command_list, t_keyval **env);
 
+void					sig_handler(int signal);
+int						is_builtin(char *command);
+void					wait_n_close(t_pars_list *command_list);
+int						c_list_len(t_pars_list *command_list);
+
+int						redir_out(t_pars_list *command_list);
+int						redir_in(t_pars_list *command_list);
+
 void					env_set(t_keyval **env_head, char *key, char *value, int plus);
 void					env_delete(t_keyval **env_head, char *key);
 void					env_builtin(t_keyval *env_head);
