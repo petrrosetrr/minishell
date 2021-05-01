@@ -77,19 +77,10 @@ char	**exec_join_env(t_keyval *env_head)
 	return (NULL);
 }
 
-void	sig_handler(int signal)
-{
-	if (signal == 3)
-		ft_putstr_fd("Quit: 3", OUT);
-	write(1, "\n", 1);
-}
-
 void	exec_fork(char *path, char **args, char **env, int *fds)
 {
 	int pid;
 
-	signal(SIGINT, sig_handler);
-	signal(SIGQUIT, sig_handler);
 	pid = fork();
 	if (pid == 0)
 	{

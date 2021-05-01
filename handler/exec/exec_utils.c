@@ -16,7 +16,7 @@ void	exec_errors(int ecode, char *path)
 {
 	if (ecode > 0)
 	{
-		errno = ecode;
+		g_status = ecode;
 		ft_putstr_fd("minishell: ", ERR);
 		ft_putstr_fd(path, ERR);
 		if (ecode == ENOENT)

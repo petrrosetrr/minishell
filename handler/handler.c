@@ -12,6 +12,13 @@
 
 #include "../includes/minishell.h"
 
+void	sig_handler(int signal)
+{
+	if (signal == 3)
+		ft_putstr_fd("Quit: 3", OUT);
+	write(1, "\n", 1);
+}
+
 t_keyval	*handler_init(char **env)
 {
 	t_keyval	*env_list;
@@ -24,6 +31,9 @@ t_keyval	*handler_init(char **env)
 	unset_builtin(&env_list, args);
 	free_2d(args);
 	env_inc_sh(&env_list);
+	signal(SIGINT, sig_handler);
+	signal(SIGQUIT, sig_handler);
+	g_status = 0;
 	return (env_list);
 }
 
@@ -94,7 +104,7 @@ void		wait_n_close(t_pars_list *command_list)
 	while (i < c_list_len(command_list))
 	{
 		wait(&ret);
-		errno = ret;
+		g_status = ret;
 		ret = 0;
 		i++;
 	}
@@ -122,7 +132,7 @@ int			redir_errors(int ecode, char *path)
 {
 	if (ecode > 0)
 	{
-		errno = ecode;
+		g_status = ecode;
 		ft_putstr_fd("minishell: ", ERR);
 		ft_putstr_fd(path, ERR);
 		ft_putstr_fd(": ", ERR);

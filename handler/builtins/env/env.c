@@ -78,5 +78,5 @@ void		env_builtin(t_keyval *env_head)
 		}
 		env_head = env_head->next;
 	}
-	errno = 0;
+	g_status = 0;
 }
