@@ -60,5 +60,5 @@ int	join_symbol(char **str, char symbol)
 		free(temp);
 		free(sym);
 	}
-	return (1);
+	return (0);
 }

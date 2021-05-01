@@ -6,10 +6,6 @@
 
 static int pars_str(t_param *param, t_pars_list *pars_list, int *i, int *arg)
 {
-//	if (pars_list->args == NULL)
-//		add_first_array(pars_list);
-//	if (pars_list->args[*arg] == NULL)
-//		add_array(&pars_list->args, *arg);
 	while (param->com[*i] && !ft_rhr(";'\"\\$|<> ", param->com[*i]))
 	{
 		join_symbol(&(pars_list->args[*arg]), param->com[*i]);

@@ -18,7 +18,7 @@ static int pars_rdr_out(t_param *param, t_rdr *rdr_out, int *i, int *arg)
 		rdr_out->type = R_APPEND;
 	while (param->com[*i] == ' ')
 		(*i)++;
-	while (param->com[*i] && !ft_rhr(";>|<", param->com[*i]))
+	while (param->com[*i] && !ft_rhr(";>|< ", param->com[*i]))
 	{
 		if (!rdr_out->f_name)
 			rdr_out->f_name = ft_calloc(2, sizeof(char));
@@ -36,6 +36,8 @@ static int pars_rdr_out(t_param *param, t_rdr *rdr_out, int *i, int *arg)
 			(*i)++;
 		}
 	}
+	while (param->com[*i] && !ft_rhr(";>|<", param->com[*i]))
+			(*i)++;
 	return (0); // FIXME если пустая строка, удалять RDR ?
 }
 
@@ -51,7 +53,7 @@ static int pars_rdr_in(t_param *param, t_rdr *rdr_in, int *i, int *arg)
 	}
 	while (param->com[*i] == ' ')
 		(*i)++;
-	while (param->com[*i] && !ft_rhr(";>|<", param->com[*i]))
+	while (param->com[*i] && !ft_rhr(";>|< ", param->com[*i]))
 	{
 		if (!rdr_in->f_name)
 			rdr_in->f_name = ft_calloc(2, sizeof(char));
@@ -69,6 +71,8 @@ static int pars_rdr_in(t_param *param, t_rdr *rdr_in, int *i, int *arg)
 			(*i)++;
 		}
 	}
+	while (param->com[*i] && !ft_rhr(";>|<", param->com[*i]))
+			(*i)++;
 	return (0);
 }
 

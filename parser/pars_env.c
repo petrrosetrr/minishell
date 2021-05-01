@@ -15,6 +15,8 @@ int pars_env(t_param *param, char **str, int *i)
 	(*i)++;
 	if (param->com[*i] && !ft_rhr(";'\"\\$|<> ?", param->com[*i]))
 		env = ft_calloc(2, sizeof(char));
+	else if (!param->com[*i] || ft_rhr(";\\|<> ", param->com[*i]))
+		join_symbol(str, '$');
 	while (param->com[*i] && !ft_rhr(";'\"\\$|<> ?", param->com[*i]))
 	{
 		join_symbol(&env, param->com[*i]);
