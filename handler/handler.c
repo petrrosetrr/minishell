@@ -108,14 +108,17 @@ void		wait_n_close(t_pars_list *command_list)
 		ret = 0;
 		i++;
 	}
-	while (command_list->next_pipe)
+	while (command_list)
 	{
-		if (command_list->fds_pipe[0] > 0)
-			close(command_list->fds_pipe[0]);
+		if (command_list->fds_pipe != NULL)
+		{
+			if (command_list->fds_pipe[0] > 0)
+				close(command_list->fds_pipe[0]);
+			free(command_list->fds_pipe);
+			command_list->fds_pipe = NULL;
+		}
 		if (command_list->fd_in > 0)
 			close(command_list->fd_in);
-		free(command_list->fds_pipe);
-		command_list->fds_pipe = NULL;
 		command_list = command_list->next_pipe;
 	}
 }
