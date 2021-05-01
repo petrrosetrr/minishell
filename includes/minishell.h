@@ -39,6 +39,8 @@
 # include <limits.h>
 # include <errno.h>
 
+int	g_status;
+
 typedef struct			s_keyval
 {
 	char				*key;
@@ -108,6 +110,7 @@ t_pars_list	*pars_pipe(t_param *param, t_pars_list *pars_list, int *i, int *arg)
 int			pars_end_com(t_param *param, t_pars_list **pars_list, int *i, int *arg);
 void		free_pars_list(t_pars_list **pars_list);
 int			pars_rdr(t_param *param, t_pars_list *pars_list, int *i, int *arg);
+int			pars_env(t_param *param, char **str, int *i);
 
 t_keyval	*handler_init(char **env);
 void		handler(t_pars_list *command_list, t_keyval **env);

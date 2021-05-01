@@ -42,6 +42,8 @@ t_pars_list next_pars_list(t_pars_list *pars_list, int spec)
 
 void free_pars_list(t_pars_list **pars_list)
 {
+	t_rdr *tmp;
+	t_pars_list *tmp2;
 	int i;
 
 	while (*pars_list)
@@ -59,18 +61,21 @@ void free_pars_list(t_pars_list **pars_list)
 			if ((*pars_list)->rdr_out->f_name)
 				free((*pars_list)->rdr_out->f_name);
 			(*pars_list)->rdr_out->f_name = NULL;
-			free((*pars_list)->rdr_out);
+			tmp = (*pars_list)->rdr_out;
 			(*pars_list)->rdr_out = (*pars_list)->rdr_out->next;
+			free(tmp);
 		}
 		while ((*pars_list)->rdr_in)
 		{
 			if ((*pars_list)->rdr_in->f_name)
 				free((*pars_list)->rdr_in->f_name);
 			(*pars_list)->rdr_in->f_name = NULL;
-			free((*pars_list)->rdr_in);
+			tmp = (*pars_list)->rdr_in;
 			(*pars_list)->rdr_in = (*pars_list)->rdr_in->next;
+			free(tmp);
 		}
-		free(*pars_list);
+		tmp2 = *pars_list;
 		*pars_list = (*pars_list)->next_pipe;
+		free(tmp2);
 	}
 }

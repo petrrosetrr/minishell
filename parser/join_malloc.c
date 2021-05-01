@@ -45,8 +45,8 @@ int	join_symbol(char **str, char symbol)
 
 	if ((*str)[0] == '\0')
 	{
-//		write(1, "9\n", 2);
-//		*str = (char*)malloc(sizeof(char) * 2);
+		free(*str);
+		*str = (char*)malloc(sizeof(char) * 2);
 		(*str)[0] = symbol;
 		(*str)[1] = '\0';
 	}
