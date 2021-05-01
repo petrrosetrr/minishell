@@ -1,6 +1,3 @@
-//
-// Created by Daisey Patrica on 4/12/21.
-//
 
 #include "../includes/minishell.h"
 
@@ -41,7 +38,7 @@
 //	}
 //}
 
-static int first_pre_pars(t_param *param, char **error)
+static int	first_pre_pars(t_param *param, char **error)
 {
 	int i;
 
@@ -67,7 +64,7 @@ static int first_pre_pars(t_param *param, char **error)
 	return (0);
 }
 
-static int second_pars_end_sym(t_param *param, char **error, int i)
+static int	second_pars_end_sym(t_param *param, char **error, int i)
 {
 	if (param->com[i] == ';' && param->com[i + 1] == ';')
 		*error = "\033[01;34m\MiniHell: syntax error near unexpected token `;;'\n";
@@ -91,7 +88,7 @@ static int second_pars_end_sym(t_param *param, char **error, int i)
 	return (0);
 }
 
-static int second_pars_pipe(t_param *param, char **error, int i)
+static int	second_pars_pipe(t_param *param, char **error, int i)
 {
 	int space;
 
@@ -117,20 +114,20 @@ static int second_pars_pipe(t_param *param, char **error, int i)
 	return (0);
 }
 
-static int second_pars_rdr_out(t_param *param, char **error, int i)
+static int	second_pars_rdr_out(t_param *param, char **error, int i)
 {
 	return (0);
 }
 
-static int second_pars_rdr_in(t_param *param, char **error, int i)
+static int	second_pars_rdr_in(t_param *param, char **error, int i)
 {
 	return (0);
 }
 
-int pre_parser(t_param *param)
+int			pre_parser(t_param *param)
 {
-	int i;
-	char *error;
+	int		i;
+	char	*error;
 
 	i = 0;
 	error = NULL;

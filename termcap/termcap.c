@@ -1,13 +1,10 @@
-//
-// Created by Daisey Patrica on 4/10/21.
-//
 
 #include "../includes/minishell.h"
 
-static int pre_pars(t_param *param)
+static int	pre_pars(t_param *param)
 {
-	int i;
-	char **temp;
+	int		i;
+	char	**temp;
 
 	i = 0;
 	while (param->com[i] == ' ')
@@ -60,19 +57,20 @@ static void	term_on_off(struct termios *term, int flag)
 	}
 }
 
-static int 	termcap_2(t_param *param, struct termios *term)
+static int	termcap_2(t_param *param, struct termios *term)
 {
 	char			str[9999];
 	int				len;
 	int				i;
 	int				n;
+	char			*kek;
 
-	char *kek = "\033[01;31m\👹Mini🔥Hell👺☞\033[01;32m\ ";
+	kek = "\033[01;31m\👹Mini🔥Hell👺☞\033[01;32m\ ";
 //	char *kek;
 //	kek = ft_strdup("\033[01;31m\👹Mini🔥Hell👺☞\033[01;32m\ ");
 	n = 0;
 	str[0] = '\0';
-	while (n != EXIT) // вынести за условие
+	while (n != EXIT)
 	{
 		if (n && n != CTRL_C && param->com && param->com[0])
 		{

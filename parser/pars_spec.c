@@ -1,10 +1,7 @@
-//
-// Created by neo on 14.04.2021.
-//
 
 #include "../includes/minishell.h"
 
-int pars_backslash(t_param *param, char **str, int *i)
+int			pars_backslash(t_param *param, char **str, int *i)
 {
 	(*i)++;
 	if (param->com[*i])
@@ -15,7 +12,7 @@ int pars_backslash(t_param *param, char **str, int *i)
 	return (0);
 }
 
-int pars_quo_one(t_param *param, char **str, int *i)
+int			pars_quo_one(t_param *param, char **str, int *i)
 {
 	(*i)++;
 	while (param->com[*i] && param->com[*i] != '\'')
@@ -28,14 +25,15 @@ int pars_quo_one(t_param *param, char **str, int *i)
 	return (0);
 }
 
-int pars_quo_two(t_param *param, char **str, int *i)
+int			pars_quo_two(t_param *param, char **str, int *i)
 {
 	(*i)++;
 	while (param->com[*i] && param->com[*i] != '"')
 	{
 		if (param->com[*i] == '$' && param->com[(*i) + 1] != '\'')
 			pars_env(param, str, i);
-		else if (param->com[*i] == '\\' && ft_rhr("\"\\$", param->com[(*i) + 1]))
+		else if (param->com[*i] == '\\' &&
+		ft_rhr("\"\\$", param->com[(*i) + 1]))
 			(*i)++;
 		join_symbol(str, param->com[*i]);
 		(*i)++;
@@ -45,7 +43,7 @@ int pars_quo_two(t_param *param, char **str, int *i)
 	return (0);
 }
 
-t_pars_list *pars_pipe(t_param *param, t_pars_list *pars_list, int *i, int *arg)
+t_pars_list	*pars_pipe(t_param *param, t_pars_list *pars_list, int *i, int *arg)
 {
 	if (pars_list->args[*arg] && !pars_list->args[*arg][0])
 	{
@@ -71,7 +69,8 @@ t_pars_list *pars_pipe(t_param *param, t_pars_list *pars_list, int *i, int *arg)
 	return (pars_list);
 }
 
-int pars_end_com(t_param *param, t_pars_list **pars_list, int *i, int *arg)
+int			pars_end_com(t_param *param, t_pars_list **pars_list,
+						int *i, int *arg)
 {
 	if ((*pars_list)->args[*arg] && !(*pars_list)->args[*arg][0])
 	{

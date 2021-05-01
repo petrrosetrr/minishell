@@ -1,6 +1,3 @@
-//
-// Created by Daisey Patrica on 4/10/21.
-//
 
 #include "../includes/minishell.h"
 
@@ -153,7 +150,8 @@ int			key_func(char *str, t_param *param, int len, int *i)
 	else if (!ft_strncmp(str, "\x1b[B", 3) && param->cur < param->last)
 		*i = up_down(param, *i, win.ws_col, 1);
 	else if (!ft_strncmp(str, "\x1b[D", 3) || !ft_strncmp(str, "\x1b[C", 3) ||\
-	!ft_strncmp(str, "\t", 2) || !ft_strncmp(str, "\x1b[A", 3) || !ft_strncmp(str, "\x1b[B", 3))
+	!ft_strncmp(str, "\t", 2) || !ft_strncmp(str, "\x1b[A", 3) ||
+	!ft_strncmp(str, "\x1b[B", 3))
 		return (0);
 	else if (!ft_strncmp(str, "\177", 2) && *i > 16)
 		*i -= backspace(param, *i, win.ws_col);

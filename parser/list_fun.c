@@ -1,10 +1,7 @@
-//
-// Created by neo on 14.04.2021.
-//
 
 #include "../includes/minishell.h"
 
-t_pars_list *init_pars_list(void)
+t_pars_list		*init_pars_list(void)
 {
 	t_pars_list *pars_list;
 
@@ -18,9 +15,9 @@ t_pars_list *init_pars_list(void)
 	return (pars_list);
 }
 
-t_rdr *init_rdr(void)
+t_rdr			*init_rdr(void)
 {
-	t_rdr  *rdr;
+	t_rdr	*rdr;
 
 	rdr = (t_rdr*)malloc(sizeof(t_rdr));
 	rdr->type = R_REWRITE;
@@ -29,10 +26,9 @@ t_rdr *init_rdr(void)
 	return (rdr);
 }
 
-t_pars_list next_pars_list(t_pars_list *pars_list, int spec)
+t_pars_list		next_pars_list(t_pars_list *pars_list, int spec)
 {
 	t_pars_list temp;
-
 
 //	if (spec == RDR_OUT)
 //	else if (spec == RDR_IN)
@@ -40,11 +36,11 @@ t_pars_list next_pars_list(t_pars_list *pars_list, int spec)
 	return (temp);
 }
 
-void free_pars_list(t_pars_list **pars_list)
+void			free_pars_list(t_pars_list **pars_list)
 {
-	t_rdr *tmp;
-	t_pars_list *tmp2;
-	int i;
+	t_rdr		*tmp;
+	t_pars_list	*tmp2;
+	int			i;
 
 	while (*pars_list)
 	{

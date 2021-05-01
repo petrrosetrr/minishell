@@ -1,13 +1,10 @@
-//
-// Created by neo on 14.04.2021.
-//
 
 #include "../includes/minishell.h"
 
 int	add_array(char ***array, int i)
 {
-	char **temp;
-	int k;
+	char	**temp;
+	int		k;
 
 //	write(1, "1\n", 2);
 //	printf("MyIQ:%d\n", i);
@@ -27,7 +24,7 @@ int	add_array(char ***array, int i)
 	return (0);
 }
 
-int add_first_array(t_pars_list *pars_list)
+int	add_first_array(t_pars_list *pars_list)
 {
 	pars_list->args = (char**)malloc(sizeof(char*) * 2);
 	pars_list->args[0] = (char*)malloc(sizeof(char) * 2);
@@ -40,8 +37,8 @@ int add_first_array(t_pars_list *pars_list)
 
 int	join_symbol(char **str, char symbol)
 {
-	char *temp;
-	char *sym;
+	char	*temp;
+	char	*sym;
 
 	if ((*str)[0] == '\0')
 	{

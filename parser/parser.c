@@ -1,10 +1,7 @@
-//
-// Created by Daisey Patrica on 4/12/21.
-//
 
 #include "../includes/minishell.h"
 
-static int pars_str(t_param *param, t_pars_list *pars_list, int *i, int *arg)
+static int	pars_str(t_param *param, t_pars_list *pars_list, int *i, int *arg)
 {
 	while (param->com[*i] && !ft_rhr(";'\"\\$|<> ", param->com[*i]))
 	{
@@ -14,7 +11,7 @@ static int pars_str(t_param *param, t_pars_list *pars_list, int *i, int *arg)
 	return (0);
 }
 
-static int parser_2(t_param *param, t_pars_list *pars_list, int *i, int *arg)
+static int	parser_2(t_param *param, t_pars_list *pars_list, int *i, int *arg)
 {
 	while (param->com[*i])
 	{
@@ -48,11 +45,11 @@ static int parser_2(t_param *param, t_pars_list *pars_list, int *i, int *arg)
 	return (0);
 }
 
-int parser(t_param *param)
+int			parser(t_param *param)
 {
-	int i;
-	int arg;
-	t_pars_list *pars_list;
+	int			i;
+	int			arg;
+	t_pars_list	*pars_list;
 
 	if (pre_parser(param)) // FIXME добавить обработку строки с пробелами
 		return (1);

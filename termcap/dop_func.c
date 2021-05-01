@@ -1,10 +1,7 @@
-//
-// Created by Daisey Patrica on 4/11/21.
-//
 
 #include "../includes/minishell.h"
 
-char *delete_last_char(char *com)
+char	*delete_last_char(char *com)
 {
 	char *temp;
 

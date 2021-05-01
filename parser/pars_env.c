@@ -1,10 +1,7 @@
-//
-// Created by neo on 30.04.2021.
-//
 
 #include "../includes/minishell.h"
 
-int pars_env(t_param *param, char **str, int *i)
+int	pars_env(t_param *param, char **str, int *i)
 {
 	char *env;
 	char *tmp;

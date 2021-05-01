@@ -47,7 +47,7 @@
 # include <limits.h>
 # include <errno.h>
 
-int 					g_status;
+int						g_status;
 
 typedef struct			s_keyval
 {
@@ -69,16 +69,16 @@ typedef struct			s_pars_list
 	t_rdr				*rdr_out;
 	t_rdr				*rdr_in;
 	struct s_pars_list	*next_pipe;
-	int 				*fds_pipe;
+	int					*fds_pipe;
 	int					fd_in;
 }						t_pars_list;
 
 typedef struct			s_param
 {
 	char				*com;
-	char 				*com_tmp;
+	char				*com_tmp;
 	char				**all_com;
-	int 				cur;
+	int					cur;
 	int					last;
 	t_pars_list			*tmp_list;
 	t_keyval			*env_list;
@@ -91,7 +91,7 @@ int						key_func(char *str, t_param *param, int len, int *i);
 char					*delete_last_char(char *com);
 int						parser(t_param *param);
 int						pre_parser(t_param *param);
-void 					freesher(t_param *param);
+void					freesher(t_param *param);
 t_pars_list				*init_pars_list(void);
 t_rdr					*init_rdr(void);
 int						add_first_array(t_pars_list *pars_list);
@@ -100,10 +100,13 @@ int						join_symbol(char **str, char symbol);
 int						pars_backslash(t_param *param, char **str, int *i);
 int						pars_quo_one(t_param *param, char **str, int *i);
 int						pars_quo_two(t_param *param, char **str, int *i);
-t_pars_list				*pars_pipe(t_param *param, t_pars_list *pars_list, int *i, int *arg);
-int						pars_end_com(t_param *param, t_pars_list **pars_list, int *i, int *arg);
+t_pars_list				*pars_pipe(t_param *param, t_pars_list *pars_list,
+									int *i, int *arg);
+int						pars_end_com(t_param *param, t_pars_list **pars_list,
+									int *i, int *arg);
 void					free_pars_list(t_pars_list **pars_list);
-int						pars_rdr(t_param *param, t_pars_list *pars_list, int *i, int *arg);
+int						pars_rdr(t_param *param, t_pars_list *pars_list,
+								int *i, int *arg);
 int						pars_env(t_param *param, char **str, int *i);
 
 t_keyval				*handler_init(char **env);
@@ -117,7 +120,8 @@ int						c_list_len(t_pars_list *command_list);
 int						redir_out(t_pars_list *command_list);
 int						redir_in(t_pars_list *command_list);
 
-void					env_set(t_keyval **env_head, char *key, char *value, int plus);
+void					env_set(t_keyval **env_head, char *key,
+								char *value, int plus);
 void					env_delete(t_keyval **env_head, char *key);
 void					env_builtin(t_keyval *env_head);
 
@@ -159,7 +163,7 @@ char					*exec_check_path(char **dir, char *command);
 char					**exec_split_path(t_keyval *env_head);
 char					**exec_join_env(t_keyval *env_head);
 void					exec_fork(char *path, char **args, char **env,
-								  int *fds);
+								int *fds);
 void					exec(t_pars_list *command, t_keyval *env, int *fds);
 
 void					cd_builtin(t_keyval **env_head, char **args);
