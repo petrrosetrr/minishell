@@ -30,7 +30,7 @@ static int	parser_2(t_param *param, t_pars_list *pars_list, int *i, int *arg)
 		else if (param->com[*i] == '|') // доработать два пайпа подряд || после арг (сега)
 			pars_list = pars_pipe(param, pars_list, i, arg);
 		else if (param->com[*i] == '>' || param->com[*i] == '<')
-			pars_rdr(param, pars_list, i, arg);
+			pars_rdr(param, &pars_list->rdr_out, &pars_list->rdr_in, i);
 		else if (param->com[*i] == ' ' && ++(*arg))
 			while (param->com[*i] == ' ')
 				(*i)++;

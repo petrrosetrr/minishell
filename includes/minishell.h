@@ -105,8 +105,8 @@ t_pars_list				*pars_pipe(t_param *param, t_pars_list *pars_list,
 int						pars_end_com(t_param *param, t_pars_list **pars_list,
 									int *i, int *arg);
 void					free_pars_list(t_pars_list **pars_list);
-int						pars_rdr(t_param *param, t_pars_list *pars_list,
-								int *i, int *arg);
+int						pars_rdr(t_param *param, t_rdr **rdr_out, t_rdr **rdr_in,
+									int *i);
 int						pars_env(t_param *param, char **str, int *i);
 
 t_keyval				*handler_init(char **env);

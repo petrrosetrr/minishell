@@ -30,13 +30,17 @@ int			pars_quo_two(t_param *param, char **str, int *i)
 	(*i)++;
 	while (param->com[*i] && param->com[*i] != '"')
 	{
-		if (param->com[*i] == '$' && param->com[(*i) + 1] != '\'')
+		if (param->com[*i] == '$' && param->com[(*i) + 1] &&\
+		!ft_rhr("\"'$", param->com[(*i) + 1]))
 			pars_env(param, str, i);
-		else if (param->com[*i] == '\\' &&
+		if (param->com[*i] == '\\' &&\
 		ft_rhr("\"\\$", param->com[(*i) + 1]))
 			(*i)++;
-		join_symbol(str, param->com[*i]);
-		(*i)++;
+		if (param->com[*i])
+		{
+			join_symbol(str, param->com[*i]);
+			(*i)++;
+		}
 	}
 	if (param->com[*i])
 		(*i)++;

@@ -1,7 +1,7 @@
 
 #include "../includes/minishell.h"
 
-static int	pars_rdr_out(t_param *param, t_rdr *rdr_out, int *i, int *arg)
+static int	pars_rdr_out(t_param *param, t_rdr *rdr_out, int *i)
 {
 	(*i)++;
 	while (rdr_out->next)
@@ -11,6 +11,7 @@ static int	pars_rdr_out(t_param *param, t_rdr *rdr_out, int *i, int *arg)
 		rdr_out->next = init_rdr();
 		rdr_out = rdr_out->next;
 	}
+	rdr_out->type = R_REWRITE;
 	if (param->com[*i] && param->com[*i] == '>' && ++(*i))
 		rdr_out->type = R_APPEND;
 	while (param->com[*i] == ' ')
@@ -38,7 +39,7 @@ static int	pars_rdr_out(t_param *param, t_rdr *rdr_out, int *i, int *arg)
 	return (0); // FIXME если пустая строка, удалять RDR ?
 }
 
-static int	pars_rdr_in(t_param *param, t_rdr *rdr_in, int *i, int *arg)
+static int	pars_rdr_in(t_param *param, t_rdr *rdr_in, int *i)
 {
 	(*i)++;
 	while (rdr_in->next)
@@ -73,21 +74,45 @@ static int	pars_rdr_in(t_param *param, t_rdr *rdr_in, int *i, int *arg)
 	return (0);
 }
 
-int			pars_rdr(t_param *param, t_pars_list *pars_list, int *i, int *arg)
+int			pars_rdr(t_param *param, t_rdr **rdr_out, t_rdr **rdr_in, int *i)
 {
+	t_rdr *temp;
+
 	while (param->com[*i] && !ft_rhr(";|", param->com[*i]))
 	{
 		if (param->com[*i] == '>')
 		{
-			if (!pars_list->rdr_out)
-				pars_list->rdr_out = init_rdr();
-			pars_rdr_out(param, pars_list->rdr_out, i, arg);
+			if (!*rdr_out)
+				*rdr_out = init_rdr();
+			pars_rdr_out(param, *rdr_out, i);
 		}
 		else if (param->com[*i] == '<')
 		{
-			if (!pars_list->rdr_in)
-				pars_list->rdr_in = init_rdr();
-			pars_rdr_in(param, pars_list->rdr_in, i, arg);
+			if (!*rdr_in)
+				*rdr_in = init_rdr();
+			pars_rdr_in(param, *rdr_in, i);
+		}
+		if (*rdr_out)
+		{
+			temp = *rdr_out;
+			while ((*rdr_out)->next)
+				*rdr_out = (*rdr_out)->next;
+			if (temp == *rdr_out && !((*rdr_out)->f_name))
+				temp = NULL;
+			if (!((*rdr_out)->f_name))
+				free(*rdr_out);
+			*rdr_out = temp;
+		}
+		if (*rdr_in)
+		{
+			temp = *rdr_in;
+			while ((*rdr_in)->next)
+				*rdr_in = (*rdr_in)->next;
+			if (temp == *rdr_in && !((*rdr_in)->f_name))
+				temp = NULL;
+			if (!((*rdr_in)->f_name))
+				free(*rdr_in);
+			*rdr_in = temp;
 		}
 	}
 	return (0);
