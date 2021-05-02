@@ -56,7 +56,7 @@ static int	up_down_more(int i, int ws_col, int up)
 	return (ws_col);
 }
 
-static int	up_down(t_param *param, int i, int ws_col, int flag)
+static int	up_down(t_param *param, int i, int ws_col, int f)
 {
 	int up;
 
@@ -65,43 +65,18 @@ static int	up_down(t_param *param, int i, int ws_col, int flag)
 		i = up_down_more(i, ws_col, up);
 	else
 		tputs(restore_cursor, 1, ft_putchar);
-	if (!flag)
+	if (!f)
 	{
 		overfree(&param->com, NULL, NULL);
-//		if (param->com)
-//			free(param->com);
 		param->com = ft_strdup(param->all_com[--param->cur]);
 		up = ft_strlen(param->com);
 		write(1, param->com, up);
 	}
 	else
-	{
-		if (++param->cur < param->last)
-		{
-			overfree(&param->com, NULL, NULL);
-//			if (param->com)
-//				free(param->com);
-			param->com = ft_strdup(param->all_com[param->cur]);
-			up = ft_strlen(param->com);
-			write(1, param->com, up);
-		}
-		else
-		{
-			overfree(&param->com, NULL, NULL);
-//			if (param->com)
-//				free(param->com);
-//			param->com = NULL;
-			if (param->com_tmp)
-			{
-				param->com = ft_strdup(param->com_tmp);
-				up = ft_strlen(param->com);
-				write(1, param->com, up);
-			}
-		}
-	}
+		dop_up_down(param);
 	while (i--)
 		tputs(delete_character, 1, ft_putchar);
-	return (16 + (flag && param->cur == param->last && !param->com_tmp ? 0 : up));
+	return (16 + (f && param->cur == param->last && !param->com_tmp ? 0 : up));
 }
 
 static void	st_put(char *str, t_param *param, int i, int ws_col)

@@ -1,24 +1,13 @@
 
 #include "../includes/minishell.h"
 
-int	pars_env(t_param *param, char **str, int *i)
+static void pars_env_2(t_param *param, char **str, int *i, char *env)
 {
-	char *env;
 	char *tmp;
 	char *env_content;
 
 	tmp = NULL;
-	env = NULL;
-	(*i)++;
-	if (param->com[*i] && !ft_rhr(";'\"\\$|<> ?", param->com[*i]))
-		env = ft_calloc(2, sizeof(char));
-	else if (!param->com[*i] || ft_rhr(";\\|<> ", param->com[*i]))
-		join_symbol(str, '$');
-	while (param->com[*i] && !ft_rhr(";'\"\\$|<> ?", param->com[*i]))
-	{
-		join_symbol(&env, param->com[*i]);
-		(*i)++;
-	}
+	env_content = NULL;
 	if (param->com[*i] == '?')
 	{
 		tmp = *str;
@@ -34,5 +23,23 @@ int	pars_env(t_param *param, char **str, int *i)
 		*str = ft_strjoin(*str, env_content);
 		overfree(&tmp, &env, &env_content);
 	}
+}
+
+int			pars_env(t_param *param, char **str, int *i)
+{
+	char *env;
+
+	env = NULL;
+	(*i)++;
+	if (param->com[*i] && !ft_rhr(";'\"\\$|<> ?", param->com[*i]))
+		env = ft_calloc(2, sizeof(char));
+	else if (!param->com[*i] || ft_rhr(";\\|<> ", param->com[*i]))
+		join_symbol(str, '$');
+	while (param->com[*i] && !ft_rhr(";'\"\\$|<> ?", param->com[*i]))
+	{
+		join_symbol(&env, param->com[*i]);
+		(*i)++;
+	}
+	pars_env_2(param, str, i, env);
 	return (0);
 }

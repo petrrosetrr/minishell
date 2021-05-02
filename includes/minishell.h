@@ -108,6 +108,12 @@ void					free_pars_list(t_pars_list **pars_list);
 int						pars_rdr(t_param *param, t_rdr **rdr_out, t_rdr **rdr_in,
 									int *i);
 int						pars_env(t_param *param, char **str, int *i);
+int						second_pars_rdr_out(t_param *param, char **error, int i);
+int						second_pars_rdr_in(t_param *param, char **error, int i);
+t_rdr					*free_null_elem(t_rdr *rdr);
+void					dop_up_down(t_param *param);
+void					add_first_arr(t_param *param);
+void					add_last_arr(t_param *param);
 
 t_keyval				*handler_init(char **env);
 void					handler(t_pars_list *command_list, t_keyval **env);

@@ -26,20 +26,49 @@ t_rdr			*init_rdr(void)
 	return (rdr);
 }
 
-t_pars_list		next_pars_list(t_pars_list *pars_list, int spec)
+t_rdr			*free_null_elem(t_rdr *rdr)
 {
-	t_pars_list temp;
+	t_rdr *head;
+	t_rdr *prev_elem;
 
-//	if (spec == RDR_OUT)
-//	else if (spec == RDR_IN)
-//	else if (spec == PIPE)
-	return (temp);
+	head = rdr;
+	prev_elem = NULL;
+	while (rdr->next)
+	{
+		prev_elem = rdr;
+		rdr = rdr->next;
+	}
+	if (prev_elem && !rdr->f_name)
+	{
+		free(prev_elem->next);
+		prev_elem->next = NULL;
+	}
+	else if (!prev_elem && !rdr->f_name)
+	{
+		free(head);
+		head = NULL;
+	}
+	return (head);
+}
+
+static void		free_rdr(t_rdr *rdr)
+{
+	t_rdr *temp;
+
+	while (rdr)
+	{
+		if (rdr->f_name)
+			free(rdr->f_name);
+		rdr->f_name = NULL;
+		temp = rdr;
+		rdr = rdr->next;
+		free(temp);
+	}
 }
 
 void			free_pars_list(t_pars_list **pars_list)
 {
-	t_rdr		*tmp;
-	t_pars_list	*tmp2;
+	t_pars_list	*temp;
 	int			i;
 
 	while (*pars_list)
@@ -52,26 +81,12 @@ void			free_pars_list(t_pars_list **pars_list)
 			free((*pars_list)->args);
 			(*pars_list)->args = NULL;
 		}
-		while ((*pars_list)->rdr_out)
-		{
-			if ((*pars_list)->rdr_out->f_name)
-				free((*pars_list)->rdr_out->f_name);
-			(*pars_list)->rdr_out->f_name = NULL;
-			tmp = (*pars_list)->rdr_out;
-			(*pars_list)->rdr_out = (*pars_list)->rdr_out->next;
-			free(tmp);
-		}
-		while ((*pars_list)->rdr_in)
-		{
-			if ((*pars_list)->rdr_in->f_name)
-				free((*pars_list)->rdr_in->f_name);
-			(*pars_list)->rdr_in->f_name = NULL;
-			tmp = (*pars_list)->rdr_in;
-			(*pars_list)->rdr_in = (*pars_list)->rdr_in->next;
-			free(tmp);
-		}
-		tmp2 = *pars_list;
+		if ((*pars_list)->rdr_out)
+			free_rdr((*pars_list)->rdr_out);
+		if ((*pars_list)->rdr_in)
+			free_rdr((*pars_list)->rdr_in);
+		temp = *pars_list;
 		*pars_list = (*pars_list)->next_pipe;
-		free(tmp2);
+		free(temp);
 	}
 }

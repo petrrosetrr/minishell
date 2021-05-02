@@ -6,8 +6,6 @@ int	add_array(char ***array, int i)
 	char	**temp;
 	int		k;
 
-//	write(1, "1\n", 2);
-//	printf("MyIQ:%d\n", i);
 	k = -1;
 	if (!array)
 		return (1);
@@ -20,7 +18,6 @@ int	add_array(char ***array, int i)
 	(*array)[k][0] = '\0';
 	(*array)[k][1] = '\0';
 	(*array)[++k] = NULL;
-//	write(1, "2\n", 2);
 	return (0);
 }
 
@@ -30,7 +27,6 @@ int	add_first_array(t_pars_list *pars_list)
 	pars_list->args[0] = (char*)malloc(sizeof(char) * 2);
 	pars_list->args[0][0] = '\0';
 	pars_list->args[0][1] = '\0';
-//	pars_list->args[0] = NULL;
 	pars_list->args[1] = NULL;
 	return (0);
 }
