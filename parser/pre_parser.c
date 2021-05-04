@@ -7,19 +7,24 @@ static int	first_pre_pars(t_param *param, char **error)
 
 	i = drop_space(&param->com);
 	if (*param->com == ';' && *(param->com + 1) == ';')
-		*error = "\033[01;34m\MiniHell: syntax error near unexpected token `;;'\n";
+		*error = "\033[01;34mMiniHell: "
+		   "syntax error near unexpected token `;;'\n";
 	else if (*param->com == ';')
-		*error = "\033[01;34m\MiniHell: syntax error near unexpected token `;'\n";
+		*error = "\033[01;34mMiniHell: "
+		   "syntax error near unexpected token `;'\n";
 	else if (*param->com == '|' && *(param->com + 1) == '|')
-		*error = "\033[01;34m\MiniHell: syntax error near unexpected token `||'\n";
+		*error = "\033[01;34mMiniHell: "
+		   "syntax error near unexpected token `||'\n";
 	else if (*param->com == '|')
-		*error = "\033[01;34m\MiniHell: syntax error near unexpected token `|'\n";
+		*error = "\033[01;34mMiniHell: "
+		   "syntax error near unexpected token `|'\n";
 	else if (*param->com == '.' && ++i)
 	{
 		param->com++;
 		i += drop_space(&param->com);
 		if (!*param->com)
-			*error = "\033[01;34m\MiniHell: .: filename argument required\n.: usage: . filename [arguments]\n";
+			*error = "\033[01;34mMiniHell: .: "
+			"filename argument required\n.: usage: . filename [arguments]\n";
 	}
 	param->com -= i;
 	return (0);
@@ -28,7 +33,8 @@ static int	first_pre_pars(t_param *param, char **error)
 static int	second_pars_end_sym(t_param *param, char **error, int i)
 {
 	if (param->com[i] == ';' && param->com[i + 1] == ';')
-		*error = "\033[01;34m\MiniHell: syntax error near unexpected token `;;'\n";
+		*error = "\033[01;34mMiniHell: "
+		   "syntax error near unexpected token `;;'\n";
 	else if (param->com[i] == ';')
 	{
 		i++;
@@ -37,13 +43,17 @@ static int	second_pars_end_sym(t_param *param, char **error, int i)
 		if (param->com[i])
 		{
 			if (param->com[i] == ';' && param->com[i + 1] == ';')
-				*error = "\033[01;34m\MiniHell: syntax error near unexpected token `;;'\n";
+				*error = "\033[01;34mMiniHell: "
+			 "syntax error near unexpected token `;;'\n";
 			else if (param->com[i] == ';')
-				*error = "\033[01;34m\MiniHell: syntax error near unexpected token `;'\n";
+				*error = "\033[01;34mMiniHell: "
+			 "syntax error near unexpected token `;'\n";
 			else if (param->com[i] == '|' && param->com[i + 1] == '|')
-				*error = "\033[01;34m\MiniHell: syntax error near unexpected token `||'\n";
+				*error = "\033[01;34mMiniHell: "
+			 "syntax error near unexpected token `||'\n";
 			else if (param->com[i] == '|')
-				*error = "\033[01;34m\MiniHell: syntax error near unexpected token `|'\n";
+				*error = "\033[01;34mMiniHell: "
+			 "syntax error near unexpected token `|'\n";
 		}
 	}
 	return (0);
@@ -57,24 +67,23 @@ static int	second_pars_pipe(t_param *param, char **error, int i)
 	space = 0;
 	if (param->com[i] == '|' && param->com[i + 1] == '|')
 	{
-		*error = "\033[01;34m\MiniHell: syntax error near unexpected token `|'\n";
+		*error = "\033[01;34mMiniHell: "
+		   "syntax error near unexpected token `|'\n";
 		if (param->com[i + 2] && param->com[i + 2] == '|')
-			*error = "\033[01;34m\MiniHell: syntax error near unexpected token `||'\n";
+			*error = "\033[01;34mMiniHell: "
+			"syntax error near unexpected token `||'\n";
 		return (0);
 	}
 	while (param->com[i] == ' ' && ++space)
 		i++;
 	if (param->com[i] == ';' && param->com[i + 1] == ';')
-		*error = "\033[01;34m\MiniHell: syntax error near unexpected token `;;'\n";
+		*error = "\033[01;34mMiniHell: "
+		   "syntax error near unexpected token `;;'\n";
 	else if (param->com[i] == ';')
-		*error = "\033[01;34m\MiniHell: syntax error near unexpected token `;'\n";
+		*error = "\033[01;34mMiniHell: "
+		   "syntax error near unexpected token `;'\n";
 	else if (param->com[i] && space)
-	{
-		if (param->com[i] == '|' && param->com[i + 1] == '|')
-			*error = "\033[01;34m\MiniHell: syntax error near unexpected token `||'\n";
-		else if (param->com[i] == '|')
-			*error = "\033[01;34m\MiniHell: syntax error near unexpected token `|'\n";
-	}
+		dop_pre_pars_pipe(param, error, i);
 	return (0);
 }
 

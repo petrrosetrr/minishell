@@ -21,7 +21,7 @@ LIBA	=	./libft/libft.a
 OBJS	=	$(SRCS:.c=.o)
 
 .c.o:
-			$(GCC) -c $< -o $(<:.c=.o)
+			$(GCC) $(FLAG) -c $< -o $(<:.c=.o)
 
 GCC		= 	gcc -g
 FLAG	=	-Wall -Wextra -Werror
@@ -36,7 +36,7 @@ all:		$(NAME)
 
 $(NAME):    $(OBJS)
 			make -C ./libft
-			$(GCC) $(OBJS) $(LIBA) -o $(NAME) -ltermcap
+			$(GCC) $(FLAG) $(OBJS) $(LIBA) -o $(NAME) -ltermcap
 
 clean:
 			$(RM) $(OBJS)

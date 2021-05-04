@@ -55,3 +55,28 @@ int	join_symbol(char **str, char symbol)
 	}
 	return (0);
 }
+
+void 	add_first_arr(t_param *param)
+{
+	param->all_com = (char**)malloc(sizeof(char*) * 2);
+	param->all_com[0] = ft_strdup(param->com);
+	param->all_com[1] = NULL;
+	param->cur = ++param->last;
+}
+
+void	add_last_arr(t_param *param)
+{
+	char **temp;
+	int i;
+
+	i = -1;
+	temp = param->all_com;
+	param->last++;
+	param->all_com = (char**)malloc(sizeof(char*) * (param->last + 1));
+	param->all_com[param->last] = NULL;
+	while (temp[++i])
+		param->all_com[i] = temp[i];
+	param->all_com[i] = ft_strdup(param->com);
+	param->cur = param->last;
+	free(temp);
+}

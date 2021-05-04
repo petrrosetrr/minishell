@@ -114,6 +114,7 @@ t_rdr					*free_null_elem(t_rdr *rdr);
 void					dop_up_down(t_param *param);
 void					add_first_arr(t_param *param);
 void					add_last_arr(t_param *param);
+void					dop_pre_pars_pipe(t_param *param, char **error, int i);
 
 t_keyval				*handler_init(char **env);
 void					handler(t_pars_list *command_list, t_keyval **env);

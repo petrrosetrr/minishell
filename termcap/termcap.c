@@ -63,7 +63,7 @@ static int	termcap_2(t_param *param, struct termios *term)
 			if (!n)
 				continue ;
 		}
-		write(1, "\033[01;31m\👹Mini🔥Hell👺☞\033[01;32m\ ", 40);
+		write(1, "\033[01;31m👹Mini🔥Hell👺☞\033[01;32m ", 40);
 		tputs(save_cursor, 1, ft_putchar);
 		overfree(&param->com, &param->com_tmp, NULL);
 		i = 16;
@@ -77,11 +77,19 @@ static int	termcap_2(t_param *param, struct termios *term)
 int			termcap(t_param *param)
 {
 	struct termios	term;
+	char *terminal;
 
+	terminal = env_get(param->env_list, "TERM");
+	if (!*terminal)
+	{
+		free(terminal);
+		terminal = NULL;
+	}
 	term_on_off(&term, 1);
-	tgetent(0, "xterm-256color"); // добавить адаптивный терминал
+	tgetent(0, terminal ? terminal : "xterm-256color");
 	termcap_2(param, &term);
 	term_on_off(&term, 0);
+	free(terminal);
 	freesher(param);
 	exit_builtin(NULL);
 	return (0);
