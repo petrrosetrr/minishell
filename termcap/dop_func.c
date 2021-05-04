@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dop_func.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpatrica <dpatrica@student.21-schoo>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/04 07:09:31 by dpatrica          #+#    #+#             */
+/*   Updated: 2021/05/04 07:09:50 by dpatrica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
@@ -29,13 +40,17 @@ void	freesher(t_param *param)
 		free(param->all_com);
 }
 
-void 	dop_up_down(t_param *param)
+int		dop_up_down(t_param *param)
 {
+	int up;
+
+	up = 0;
 	if (++param->cur < param->last)
 	{
 		overfree(&param->com, NULL, NULL);
 		param->com = ft_strdup(param->all_com[param->cur]);
-		write(1, param->com, ft_strlen(param->com));
+		up = ft_strlen(param->com);
+		write(1, param->com, up);
 	}
 	else
 	{
@@ -43,17 +58,19 @@ void 	dop_up_down(t_param *param)
 		if (param->com_tmp)
 		{
 			param->com = ft_strdup(param->com_tmp);
-			write(1, param->com, ft_strlen(param->com));
+			up = ft_strlen(param->com);
+			write(1, param->com, up);
 		}
 	}
+	return (up);
 }
 
-void dop_pre_pars_pipe(t_param *param, char **error, int i)
+void	dop_pre_pars_pipe(t_param *param, char **error, int i)
 {
 	if (param->com[i] == '|' && param->com[i + 1] == '|')
 		*error = "\033[01;34mMiniHell: "
-				 "syntax error near unexpected token `||'\n";
+			"syntax error near unexpected token `||'\n";
 	else if (param->com[i] == '|')
 		*error = "\033[01;34mMiniHell: "
-				 "syntax error near unexpected token `|'\n";
+			"syntax error near unexpected token `|'\n";
 }

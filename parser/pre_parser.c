@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pre_parser.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpatrica <dpatrica@student.21-schoo>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/04 07:11:20 by dpatrica          #+#    #+#             */
+/*   Updated: 2021/05/04 07:11:23 by dpatrica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
@@ -8,16 +19,16 @@ static int	first_pre_pars(t_param *param, char **error)
 	i = drop_space(&param->com);
 	if (*param->com == ';' && *(param->com + 1) == ';')
 		*error = "\033[01;34mMiniHell: "
-		   "syntax error near unexpected token `;;'\n";
+			"syntax error near unexpected token `;;'\n";
 	else if (*param->com == ';')
 		*error = "\033[01;34mMiniHell: "
-		   "syntax error near unexpected token `;'\n";
+			"syntax error near unexpected token `;'\n";
 	else if (*param->com == '|' && *(param->com + 1) == '|')
 		*error = "\033[01;34mMiniHell: "
-		   "syntax error near unexpected token `||'\n";
+			"syntax error near unexpected token `||'\n";
 	else if (*param->com == '|')
 		*error = "\033[01;34mMiniHell: "
-		   "syntax error near unexpected token `|'\n";
+			"syntax error near unexpected token `|'\n";
 	else if (*param->com == '.' && ++i)
 	{
 		param->com++;
@@ -34,7 +45,7 @@ static int	second_pars_end_sym(t_param *param, char **error, int i)
 {
 	if (param->com[i] == ';' && param->com[i + 1] == ';')
 		*error = "\033[01;34mMiniHell: "
-		   "syntax error near unexpected token `;;'\n";
+			"syntax error near unexpected token `;;'\n";
 	else if (param->com[i] == ';')
 	{
 		i++;
@@ -44,16 +55,16 @@ static int	second_pars_end_sym(t_param *param, char **error, int i)
 		{
 			if (param->com[i] == ';' && param->com[i + 1] == ';')
 				*error = "\033[01;34mMiniHell: "
-			 "syntax error near unexpected token `;;'\n";
+			"syntax error near unexpected token `;;'\n";
 			else if (param->com[i] == ';')
 				*error = "\033[01;34mMiniHell: "
-			 "syntax error near unexpected token `;'\n";
+			"syntax error near unexpected token `;'\n";
 			else if (param->com[i] == '|' && param->com[i + 1] == '|')
 				*error = "\033[01;34mMiniHell: "
-			 "syntax error near unexpected token `||'\n";
+			"syntax error near unexpected token `||'\n";
 			else if (param->com[i] == '|')
 				*error = "\033[01;34mMiniHell: "
-			 "syntax error near unexpected token `|'\n";
+			"syntax error near unexpected token `|'\n";
 		}
 	}
 	return (0);
@@ -68,7 +79,7 @@ static int	second_pars_pipe(t_param *param, char **error, int i)
 	if (param->com[i] == '|' && param->com[i + 1] == '|')
 	{
 		*error = "\033[01;34mMiniHell: "
-		   "syntax error near unexpected token `|'\n";
+			"syntax error near unexpected token `|'\n";
 		if (param->com[i + 2] && param->com[i + 2] == '|')
 			*error = "\033[01;34mMiniHell: "
 			"syntax error near unexpected token `||'\n";
@@ -78,10 +89,10 @@ static int	second_pars_pipe(t_param *param, char **error, int i)
 		i++;
 	if (param->com[i] == ';' && param->com[i + 1] == ';')
 		*error = "\033[01;34mMiniHell: "
-		   "syntax error near unexpected token `;;'\n";
+			"syntax error near unexpected token `;;'\n";
 	else if (param->com[i] == ';')
 		*error = "\033[01;34mMiniHell: "
-		   "syntax error near unexpected token `;'\n";
+			"syntax error near unexpected token `;'\n";
 	else if (param->com[i] && space)
 		dop_pre_pars_pipe(param, error, i);
 	return (0);

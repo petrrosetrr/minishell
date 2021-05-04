@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   termcap.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpatrica <dpatrica@student.21-schoo>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/04 07:09:55 by dpatrica          #+#    #+#             */
+/*   Updated: 2021/05/04 07:09:58 by dpatrica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
@@ -77,7 +88,7 @@ static int	termcap_2(t_param *param, struct termios *term)
 int			termcap(t_param *param)
 {
 	struct termios	term;
-	char *terminal;
+	char			*terminal;
 
 	terminal = env_get(param->env_list, "TERM");
 	if (!*terminal)

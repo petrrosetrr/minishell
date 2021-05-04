@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pars_rdr.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpatrica <dpatrica@student.21-schoo>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/04 07:10:34 by dpatrica          #+#    #+#             */
+/*   Updated: 2021/05/04 07:10:37 by dpatrica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static void put_f_name(t_param *param, t_rdr *rdr, int *i)
+static void	put_f_name(t_param *param, t_rdr *rdr, int *i)
 {
 	if (!rdr->f_name)
 		rdr->f_name = ft_calloc(2, sizeof(char));

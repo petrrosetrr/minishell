@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   join_malloc.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpatrica <dpatrica@student.21-schoo>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/04 07:10:15 by dpatrica          #+#    #+#             */
+/*   Updated: 2021/05/04 07:10:18 by dpatrica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-int	add_array(char ***array, int i)
+int		add_array(char ***array, int i)
 {
 	char	**temp;
 	int		k;
@@ -21,7 +32,7 @@ int	add_array(char ***array, int i)
 	return (0);
 }
 
-int	add_first_array(t_pars_list *pars_list)
+int		add_first_array(t_pars_list *pars_list)
 {
 	pars_list->args = (char**)malloc(sizeof(char*) * 2);
 	pars_list->args[0] = (char*)malloc(sizeof(char) * 2);
@@ -31,7 +42,7 @@ int	add_first_array(t_pars_list *pars_list)
 	return (0);
 }
 
-int	join_symbol(char **str, char symbol)
+int		join_symbol(char **str, char symbol)
 {
 	char	*temp;
 	char	*sym;
@@ -56,7 +67,7 @@ int	join_symbol(char **str, char symbol)
 	return (0);
 }
 
-void 	add_first_arr(t_param *param)
+void	add_first_arr(t_param *param)
 {
 	param->all_com = (char**)malloc(sizeof(char*) * 2);
 	param->all_com[0] = ft_strdup(param->com);
@@ -66,8 +77,8 @@ void 	add_first_arr(t_param *param)
 
 void	add_last_arr(t_param *param)
 {
-	char **temp;
-	int i;
+	char	**temp;
+	int		i;
 
 	i = -1;
 	temp = param->all_com;

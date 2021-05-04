@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pars_env.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpatrica <dpatrica@student.21-schoo>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/04 07:10:24 by dpatrica          #+#    #+#             */
+/*   Updated: 2021/05/04 07:10:27 by dpatrica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static void pars_env_2(t_param *param, char **str, int *i, char *env)
+static void	pars_env_2(t_param *param, char **str, int *i, char *env)
 {
 	char *tmp;
 	char *env_content;

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   key_function.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dpatrica <dpatrica@student.21-schoo>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/04 07:09:43 by dpatrica          #+#    #+#             */
+/*   Updated: 2021/05/04 07:09:46 by dpatrica         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
@@ -56,7 +67,7 @@ static int	up_down_more(int i, int ws_col, int up)
 	return (ws_col);
 }
 
-static int	up_down(t_param *param, int i, int ws_col, int f)
+static int	up_down(t_param *param, int i, int ws_col, int flag)
 {
 	int up;
 
@@ -65,7 +76,7 @@ static int	up_down(t_param *param, int i, int ws_col, int f)
 		i = up_down_more(i, ws_col, up);
 	else
 		tputs(restore_cursor, 1, ft_putchar);
-	if (!f)
+	if (!flag)
 	{
 		overfree(&param->com, NULL, NULL);
 		param->com = ft_strdup(param->all_com[--param->cur]);
@@ -73,10 +84,10 @@ static int	up_down(t_param *param, int i, int ws_col, int f)
 		write(1, param->com, up);
 	}
 	else
-		dop_up_down(param);
+		up = dop_up_down(param);
 	while (i--)
 		tputs(delete_character, 1, ft_putchar);
-	return (16 + (f && param->cur == param->last && !param->com_tmp ? 0 : up));
+	return (16 + up);
 }
 
 static void	st_put(char *str, t_param *param, int i, int ws_col)
